@@ -56,25 +56,24 @@ const ProjectGallery = () => {
     : projects.filter(project => project.category === selectedCategory);
 
   return (
-    <section className="py-20 px-6" id="projekte">
+    <section className="py-8 px-6" id="projekte">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
             Meine Lovable-Projekte
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Jedes Projekt erzählt seine eigene Geschichte – von ersten Ideen bis hin zu liebevollen Details,
-            die das Besondere ausmachen.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Jedes Projekt erzählt seine eigene Geschichte – von ersten Ideen bis hin zu liebevollen Details.
           </p>
         </div>
 
         {/* Kategorie-Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+              className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
                 selectedCategory === category
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
                   : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-md'
@@ -86,17 +85,17 @@ const ProjectGallery = () => {
         </div>
 
         {/* Projektgrid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {filteredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <p className="text-gray-600 mb-6">
+        <div className="text-center mt-12">
+          <p className="text-gray-600 mb-4">
             Und das ist erst der Anfang... ✨
           </p>
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/80 rounded-full shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full shadow-sm">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
             <span className="text-sm font-medium text-gray-700">Weitere Projekte in Arbeit</span>
           </div>
