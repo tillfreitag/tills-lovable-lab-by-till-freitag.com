@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Heart, Star, Book, Message } from 'lucide-react';
+import { Heart, Star, Book, MessageCircle } from 'lucide-react';
 
 const ContactSection = () => {
   const [message, setMessage] = useState('');
@@ -21,7 +21,7 @@ const ContactSection = () => {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-blue-100 rounded-full">
-            <Message className="w-4 h-4 text-blue-600" />
+            <MessageCircle className="w-4 h-4 text-blue-600" />
             <span className="text-sm font-medium text-blue-800">Lass uns sprechen</span>
           </div>
           
