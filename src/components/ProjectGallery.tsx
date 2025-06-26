@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { LayoutGrid, Grid3X3, Grid2X2 } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 
 // Beispielprojekte - hier kannst du deine echten Projekte einfügen
@@ -50,35 +51,109 @@ const categories = ["Alle", "Mobile Experience", "Web Application", "Knowledge B
 
 const ProjectGallery = () => {
   const [selectedCategory, setSelectedCategory] = useState("Alle");
+  const [gridCols, setGridCols] = useState<2 | 3 | 4>(2);
+  
+  // Load user preference from localStorage on mount
+  useEffect(() => {
+    const savedGridCols = localStorage.getItem('projectGridCols');
+    if (savedGridCols && [2, 3, 4].includes(Number(savedGridCols))) {
+      setGridCols(Number(savedGridCols) as 2 | 3 | 4);
+    }
+  }, []);
+
+  // Save user preference to localStorage
+  const handleGridChange = (cols: 2 | 3 | 4) => {
+    setGridCols(cols);
+    localStorage.setItem('projectGridCols', cols.toString());
+  };
   
   const filteredProjects = selectedCategory === "Alle" 
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
 
+  // Dynamic grid classes based on selection
+  const getGridClasses = () => {
+    switch (gridCols) {
+      case 2:
+        return "grid grid-cols-1 md:grid-cols-2 gap-6";
+      case 3:
+        return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4";
+      case 4:
+        return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3";
+      default:
+        return "grid grid-cols-1 md:grid-cols-2 gap-6";
+    }
+  };
+
   return (
     <section className="py-6 px-6">
       <div className="max-w-6xl mx-auto">
-        {/* Kategorie-Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
-          {categories.map((category) => (
+        {/* Controls Section */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+          {/* Kategorie-Filter */}
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                  selectedCategory === category
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
+                    : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-md'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Grid Layout Controls */}
+          <div className="flex items-center gap-2 bg-white/80 rounded-full p-1 shadow-sm">
             <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
-                selectedCategory === category
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
-                  : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-md'
+              onClick={() => handleGridChange(2)}
+              className={`p-2 rounded-full transition-all duration-200 ${
+                gridCols === 2
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-sm'
+                  : 'text-gray-600 hover:bg-white hover:text-gray-800'
               }`}
+              title="2 Spalten"
             >
-              {category}
+              <Grid2X2 className="w-4 h-4" />
             </button>
-          ))}
+            <button
+              onClick={() => handleGridChange(3)}
+              className={`p-2 rounded-full transition-all duration-200 ${
+                gridCols === 3
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-sm'
+                  : 'text-gray-600 hover:bg-white hover:text-gray-800'
+              }`}
+              title="3 Spalten"
+            >
+              <Grid3X3 className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => handleGridChange(4)}
+              className={`p-2 rounded-full transition-all duration-200 ${
+                gridCols === 4
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-sm'
+                  : 'text-gray-600 hover:bg-white hover:text-gray-800'
+              }`}
+              title="4 Spalten"
+            >
+              <LayoutGrid className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
-        {/* Projektgrid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        {/* Projektgrid mit dynamischen Klassen */}
+        <div className={`${getGridClasses()} transition-all duration-500`}>
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard 
+              key={project.id} 
+              project={project} 
+              index={index}
+              compact={gridCols > 2}
+            />
           ))}
         </div>
 
