@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { LayoutGrid, Grid3X3, Grid2X2 } from 'lucide-react';
 import ProjectCard from './ProjectCard';
@@ -71,7 +70,7 @@ const ProjectGallery = () => {
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
 
-  // Dynamic grid classes based on selection
+  // Improved dynamic grid classes with better responsive breakpoints
   const getGridClasses = () => {
     switch (gridCols) {
       case 2:
@@ -116,7 +115,7 @@ const ProjectGallery = () => {
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-sm'
                   : 'text-gray-600 hover:bg-white hover:text-gray-800'
               }`}
-              title="2 Spalten"
+              title="2 Spalten - Große Karten"
             >
               <Grid2X2 className="w-4 h-4" />
             </button>
@@ -127,7 +126,7 @@ const ProjectGallery = () => {
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-sm'
                   : 'text-gray-600 hover:bg-white hover:text-gray-800'
               }`}
-              title="3 Spalten"
+              title="3 Spalten - Mittlere Karten"
             >
               <Grid3X3 className="w-4 h-4" />
             </button>
@@ -138,7 +137,7 @@ const ProjectGallery = () => {
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-sm'
                   : 'text-gray-600 hover:bg-white hover:text-gray-800'
               }`}
-              title="4 Spalten"
+              title="4 Spalten - Kompakte Karten"
             >
               <LayoutGrid className="w-4 h-4" />
             </button>
