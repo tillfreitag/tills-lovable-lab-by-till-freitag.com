@@ -1,10 +1,7 @@
-
 import React from 'react';
 import { Heart } from 'lucide-react';
-
 const MinimalHeader = () => {
-  return (
-    <header className="py-6 px-6 border-b border-white/20">
+  return <header className="py-6 px-6 border-b border-white/20">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -15,7 +12,7 @@ const MinimalHeader = () => {
               <h1 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
                 Digitales Herzensmuseum
               </h1>
-              <p className="text-sm text-gray-600">Lovable-Projekte mit Herzblut ✨</p>
+              <p className="text-sm text-gray-600">Lovable-Projekte mit Gefühl ✨</p>
             </div>
           </div>
           
@@ -25,8 +22,6 @@ const MinimalHeader = () => {
           </div>
         </div>
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default MinimalHeader;
