@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Star, Heart } from 'lucide-react';
+import { Star, Heart, ExternalLink, Github } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -11,6 +11,8 @@ interface Project {
   lovableAspects: string[];
   image: string;
   tags: string[];
+  githubUrl?: string;
+  liveUrl?: string;
 }
 
 interface ProjectCardProps {
@@ -20,6 +22,14 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = false }) => {
+  const handleExplore = () => {
+    if (project.liveUrl) {
+      window.open(project.liveUrl, '_blank');
+    } else if (project.githubUrl) {
+      window.open(project.githubUrl, '_blank');
+    }
+  };
+
   return (
     <div 
       className={`group bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${
@@ -39,6 +49,34 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
         </div>
         <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
           {project.category}
+        </div>
+        
+        {/* GitHub & Live Links */}
+        <div className="absolute top-4 left-4 flex gap-2">
+          {project.githubUrl && project.githubUrl !== '#' && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-black/60 backdrop-blur-sm text-white p-2 rounded-full hover:bg-black/80 transition-colors"
+              title="GitHub Repository"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Github className="w-4 h-4" />
+            </a>
+          )}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-600/80 backdrop-blur-sm text-white p-2 rounded-full hover:bg-green-600 transition-colors"
+              title="Live Demo"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
         </div>
       </div>
 
@@ -118,10 +156,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
 
         {/* Hover-Aktion */}
         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-4">
-          <button className={`w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-medium hover:shadow-lg transition-shadow ${
-            compact ? 'py-2 text-sm' : 'py-3'
-          }`}>
-            Projekt erkunden →
+          <button 
+            onClick={handleExplore}
+            className={`w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-medium hover:shadow-lg transition-shadow ${
+              compact ? 'py-2 text-sm' : 'py-3'
+            }`}
+          >
+            {project.liveUrl ? 'Live Demo →' : 'Code ansehen →'}
           </button>
         </div>
       </div>
