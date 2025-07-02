@@ -1,5 +1,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import deTranslations from '../translations/de.json';
+import enTranslations from '../translations/en.json';
 
 type Language = 'de' | 'en';
 
@@ -42,11 +44,11 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const t = (key: string): string => {
-    const translations = language === 'de' ? require('../translations/de.json') : require('../translations/en.json');
+    const translations = language === 'de' ? deTranslations : enTranslations;
     
     // Support nested keys like "header.title"
     const keys = key.split('.');
-    let value = translations;
+    let value: any = translations;
     
     for (const k of keys) {
       value = value?.[k];
