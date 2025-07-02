@@ -1,4 +1,3 @@
-
 export interface GitHubRepo {
   id: number;
   name: string;
@@ -10,6 +9,7 @@ export interface GitHubRepo {
   created_at: string;
   updated_at: string;
   homepage?: string;
+  fork: boolean;
 }
 
 export interface ProjectFromGitHub {
