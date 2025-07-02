@@ -11,8 +11,7 @@ const Footer = () => {
         
         <div className="border-t border-white/20 pt-6">
           <p className="text-purple-200 text-sm">
-            © 2024 • Ein Herzensprojekt • 
-            <span className="mx-2">von Till Freitag Consulting GmbH •</span>
+            © 2025 • Ein Herzensprojekt • der Till Freitag Consulting GmbH •</span>
             Version 1.0 – und das ist erst der Anfang! ✨
           </p>
         </div>
