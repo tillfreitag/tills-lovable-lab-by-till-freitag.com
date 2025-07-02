@@ -1,0 +1,105 @@
+
+{
+  "header": {
+    "title": "Till's Lovable Lab",
+    "subtitle": "Lovable projects with soul ✨",
+    "status": "Actively experimenting"
+  },
+  "projects": {
+    "categories": {
+      "all": "All",
+      "web": "Web Application",
+      "mobile": "Mobile Experience", 
+      "backend": "Backend Service",
+      "knowledge": "Knowledge Base",
+      "communication": "Communication"
+    },
+    "tools": "Tools & Technologies",
+    "toolsCompact": "Tools",
+    "lovableAspects": "Lovable Aspects",
+    "moreAspects": "more",
+    "viewCode": "View Code →",
+    "liveDemo": "Live Demo →",
+    "loading": "Loading projects from GitHub...",
+    "refresh": "Refresh projects",
+    "lastUpdate": "Last updated:",
+    "projectsFrom": "projects from",
+    "footer": "Projects directly from my GitHub",
+    "footerFallback": "And this is just the beginning... ✨",
+    "liveSync": "Live sync with GitHub",
+    "inProgress": "More projects in progress"
+  },
+  "github": {
+    "integration": "GitHub Integration",
+    "username": "GitHub Username",
+    "placeholder": "e.g. octocat",
+    "save": "Save",
+    "cancel": "Cancel",
+    "error": "GitHub user not found or API limit reached",
+    "required": "Please enter a GitHub username"
+  },
+  "about": {
+    "badge": "Behind the scenes",
+    "title": "The story behind",
+    "why": {
+      "title": "Why this portfolio exists",
+      "text": "Every Lovable project is a small experiment, a piece of passion transformed into code. This portfolio is my way of collecting and sharing these digital dreams – not perfect, but authentic and full of attention to detail."
+    },
+    "for": {
+      "title": "Who it's meant for",
+      "text": "For everyone interested in the magic of digital design. For inspiration seekers, for Lovable enthusiasts, and for all who believe that technology can be beautiful and human."
+    },
+    "unique": {
+      "title": "What makes it unique",
+      "text": "It's not just a project collection – it's a living diary of my creative journey. Each project shows not only the final result, but also the thoughts, emotions, and small discoveries behind it."
+    },
+    "madeWith": "Made with Love",
+    "subtitle": "Every pixel, every animation, every interaction was crafted with love for detail.",
+    "stats": {
+      "coffee": "Coffee consumed",
+      "coffeeCount": "∞ cups",
+      "lines": "Lines of code",
+      "linesCount": "10k+",
+      "hours": "Hours of love",
+      "hoursCount": "500+"
+    }
+  },
+  "contact": {
+    "badge": "Let's talk",
+    "title": "Write to me! ✨",
+    "subtitle": "Feedback, ideas, questions, or just a simple \"hello\" – I'm happy about every message and exchange!",
+    "form": {
+      "title": "Digital Guestbook",
+      "email": "Your Email",
+      "emailPlaceholder": "your@email.com",
+      "message": "Your Message",
+      "messagePlaceholder": "Tell me about your ideas, feedback, or just what's on your mind...",
+      "submit": "Send message with love 💜",
+      "success": "Thanks for your message! 💜"
+    },
+    "inspiration": {
+      "title": "Looking for inspiration?",
+      "text": "Share your own Lovable experiments! I love seeing what other creative minds create."
+    },
+    "collaborate": {
+      "title": "Want to collaborate?",
+      "text": "Do you have an idea for a joint project? Let's make digital dreams come true together!"
+    },
+    "hello": {
+      "title": "Just say hello",
+      "text": "Sometimes the most beautiful conversations are those that start without a particular reason. Just write \"Hi!\" ✨"
+    },
+    "follow": "Or follow me here:"
+  },
+  "footer": {
+    "title": "Till's Lovable Portfolio grows continuously.",
+    "subtitle": "Made with Lovable & Lots of Love.",
+    "copyright": "© 2025 • A passion project • by Till Freitag Consulting GmbH • Version 1.0 – and this is just the beginning! ✨",
+    "quote": "\"The most beautiful things emerge when technology meets humanity.\" 💜",
+    "imprint": "Legal Notice",
+    "privacy": "Privacy Policy"
+  },
+  "legal": {
+    "backToHome": "Back to homepage"
+  }
+}

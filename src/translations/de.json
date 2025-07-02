@@ -1,0 +1,105 @@
+
+{
+  "header": {
+    "title": "Till's Lovable Lab",
+    "subtitle": "Lovable-Projekte mit Gefühl ✨",
+    "status": "Aktiv experimentierend"
+  },
+  "projects": {
+    "categories": {
+      "all": "Alle",
+      "web": "Web Application",
+      "mobile": "Mobile Experience",
+      "backend": "Backend Service",
+      "knowledge": "Knowledge Base",
+      "communication": "Communication"
+    },
+    "tools": "Tools & Technologien",
+    "toolsCompact": "Tools",
+    "lovableAspects": "Lovable Aspekte",
+    "moreAspects": "weitere",
+    "viewCode": "Code ansehen →",
+    "liveDemo": "Live Demo →",
+    "loading": "Lade Projekte von GitHub...",
+    "refresh": "Projekte aktualisieren",
+    "lastUpdate": "Zuletzt aktualisiert:",
+    "projectsFrom": "Projekte von",
+    "footer": "Projekte direkt aus meinem GitHub",
+    "footerFallback": "Und das ist erst der Anfang... ✨",
+    "liveSync": "Live-Sync mit GitHub",
+    "inProgress": "Weitere Projekte in Arbeit"
+  },
+  "github": {
+    "integration": "GitHub Integration",
+    "username": "GitHub Benutzername",
+    "placeholder": "z.B. octocat",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "error": "GitHub-Benutzer nicht gefunden oder API-Limit erreicht",
+    "required": "Bitte gib einen GitHub-Benutzernamen ein"
+  },
+  "about": {
+    "badge": "Hinter den Kulissen",
+    "title": "Die Geschichte dahinter",
+    "why": {
+      "title": "Warum dieses Portfolio existiert",
+      "text": "Jedes Lovable-Projekt ist ein kleines Experiment, ein Stück Herzblut, das in Code verwandelt wurde. Dieses Portfolio ist mein Weg, diese digitalen Träume zu sammeln und zu teilen – nicht perfekt, aber authentisch und voller Liebe zum Detail."
+    },
+    "for": {
+      "title": "Für wen es gedacht ist",
+      "text": "Für alle, die an der Magie der digitalen Gestaltung interessiert sind. Für Inspiration Suchende, für Lovable-Enthusiasten und für alle, die glauben, dass Technologie schön und menschlich sein kann."
+    },
+    "unique": {
+      "title": "Was es einzigartig macht",
+      "text": "Es ist nicht nur eine Projektsammlung – es ist ein lebendiges Tagebuch meiner kreativen Reise. Jedes Projekt zeigt nicht nur das Endergebnis, sondern auch die Gedanken, Emotionen und kleinen Entdeckungen dahinter."
+    },
+    "madeWith": "Made with Love",
+    "subtitle": "Jedes Pixel, jede Animation, jede Interaktion wurde mit Liebe zum Detail gestaltet.",
+    "stats": {
+      "coffee": "Kaffee getrunken",
+      "coffeeCount": "∞ Tassen",
+      "lines": "Code-Zeilen",
+      "linesCount": "10k+",
+      "hours": "Stunden Liebe",
+      "hoursCount": "500+"
+    }
+  },
+  "contact": {
+    "badge": "Lass uns sprechen",
+    "title": "Schreib mir! ✨",
+    "subtitle": "Feedback, Ideen, Fragen oder einfach nur ein \"Hallo\" – ich freue mich über jede Nachricht und jeden Austausch!",
+    "form": {
+      "title": "Digitales Gästebuch",
+      "email": "Deine E-Mail",
+      "emailPlaceholder": "deine@email.de",
+      "message": "Deine Nachricht",
+      "messagePlaceholder": "Erzähl mir von deinen Ideen, Feedback oder einfach was dir durch den Kopf geht...",
+      "submit": "Nachricht mit Liebe senden 💜",
+      "success": "Danke für deine Nachricht! 💜"
+    },
+    "inspiration": {
+      "title": "Inspiration gefällig?",
+      "text": "Teile deine eigenen Lovable-Experimente! Ich liebe es, zu sehen, was andere kreative Köpfe erschaffen."
+    },
+    "collaborate": {
+      "title": "Zusammenarbeiten?",
+      "text": "Hast du eine Idee für ein gemeinsames Projekt? Lass uns digitale Träume zusammen wahr werden lassen!"
+    },
+    "hello": {
+      "title": "Einfach Hallo sagen",
+      "text": "Manchmal sind die schönsten Gespräche die, die ohne besonderen Grund entstehen. Schreib einfach \"Hi!\" ✨"
+    },
+    "follow": "Oder folge mir hier:"
+  },
+  "footer": {
+    "title": "Till's Lovable Portfolio wächst kontinuierlich.",
+    "subtitle": "Made with Lovable & Lots of Love.",
+    "copyright": "© 2025 • Ein Herzensprojekt • der Till Freitag Consulting GmbH • Version 1.0 – und das ist erst der Anfang! ✨",
+    "quote": "\"Die schönsten Dinge entstehen, wenn Technologie auf Menschlichkeit trifft.\" 💜",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz"
+  },
+  "legal": {
+    "backToHome": "Zurück zur Startseite"
+  }
+}

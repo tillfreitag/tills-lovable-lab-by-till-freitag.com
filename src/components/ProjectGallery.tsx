@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LayoutGrid, Grid3X3, Grid2X2, RefreshCw, Loader2 } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import ProjectCard from './ProjectCard';
 import GitHubConfig from './GitHubConfig';
 import { githubService, ProjectFromGitHub } from '@/services/githubService';
@@ -57,12 +58,18 @@ const fallbackProjects = [
 ];
 
 const ProjectGallery = () => {
+  const { t } = useLanguage();
   const [projects, setProjects] = useState<ProjectFromGitHub[]>(fallbackProjects);
-  const [selectedCategory, setSelectedCategory] = useState("Alle");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [gridCols, setGridCols] = useState<2 | 3 | 4>(2);
   const [githubUsername, setGithubUsername] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const [lastRefresh, setLastRefresh] = useState<Date | null>(null);
+  
+  // Initialize selectedCategory with translated "All"
+  useEffect(() => {
+    setSelectedCategory(t('projects.categories.all'));
+  }, [t]);
   
   // Load user preferences from localStorage on mount
   useEffect(() => {
@@ -115,10 +122,13 @@ const ProjectGallery = () => {
     localStorage.setItem('projectGridCols', cols.toString());
   };
   
-  // Get unique categories from projects
-  const categories = ["Alle", ...Array.from(new Set(projects.map(p => p.category)))];
+  // Get unique categories from projects with translations
+  const categories = [
+    t('projects.categories.all'),
+    ...Array.from(new Set(projects.map(p => p.category)))
+  ];
   
-  const filteredProjects = selectedCategory === "Alle" 
+  const filteredProjects = selectedCategory === t('projects.categories.all') 
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
 
@@ -153,7 +163,7 @@ const ProjectGallery = () => {
                   onClick={handleRefresh}
                   disabled={isLoading}
                   className="inline-flex items-center gap-2 px-3 py-2 bg-white/80 rounded-full shadow-sm hover:bg-white hover:shadow-md transition-all text-sm text-gray-700 disabled:opacity-50"
-                  title="Projekte aktualisieren"
+                  title={t('projects.refresh')}
                 >
                   {isLoading ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
@@ -164,7 +174,7 @@ const ProjectGallery = () => {
                 
                 {lastRefresh && (
                   <span className="text-xs text-gray-500">
-                    Zuletzt aktualisiert: {lastRefresh.toLocaleTimeString()}
+                    {t('projects.lastUpdate')} {lastRefresh.toLocaleTimeString()}
                   </span>
                 )}
               </div>
@@ -174,7 +184,7 @@ const ProjectGallery = () => {
           {githubUsername && (
             <div className="text-sm text-gray-600">
               <span className="inline-flex items-center gap-1">
-                📂 {projects.length} Projekte von <strong>@{githubUsername}</strong>
+                📂 {projects.length} {t('projects.projectsFrom')} <strong>@{githubUsername}</strong>
               </span>
             </div>
           )}
@@ -241,7 +251,7 @@ const ProjectGallery = () => {
         {isLoading && (
           <div className="text-center py-12">
             <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-purple-500" />
-            <p className="text-gray-600">Lade Projekte von GitHub...</p>
+            <p className="text-gray-600">{t('projects.loading')}</p>
           </div>
         )}
 
@@ -262,14 +272,14 @@ const ProjectGallery = () => {
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-4">
             {githubUsername 
-              ? `Projekte direkt aus meinem GitHub (@${githubUsername}) ✨`
-              : "Und das ist erst der Anfang... ✨"
+              ? `${t('projects.footer')} (@${githubUsername}) ✨`
+              : t('projects.footerFallback')
             }
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full shadow-sm">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
             <span className="text-sm font-medium text-gray-700">
-              {githubUsername ? 'Live-Sync mit GitHub' : 'Weitere Projekte in Arbeit'}
+              {githubUsername ? t('projects.liveSync') : t('projects.inProgress')}
             </span>
           </div>
         </div>

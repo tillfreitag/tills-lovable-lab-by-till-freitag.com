@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Settings, Github, Save, Loader2 } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { githubService } from '@/services/githubService';
 
 interface GitHubConfigProps {
@@ -9,6 +10,7 @@ interface GitHubConfigProps {
 }
 
 const GitHubConfig: React.FC<GitHubConfigProps> = ({ onUsernameChange, currentUsername = '' }) => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [username, setUsername] = useState(currentUsername);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +22,7 @@ const GitHubConfig: React.FC<GitHubConfigProps> = ({ onUsernameChange, currentUs
 
   const handleSave = async () => {
     if (!username.trim()) {
-      setError('Bitte gib einen GitHub-Benutzernamen ein');
+      setError(t('github.required'));
       return;
     }
 
@@ -38,7 +40,7 @@ const GitHubConfig: React.FC<GitHubConfigProps> = ({ onUsernameChange, currentUs
       
       setIsOpen(false);
     } catch (error) {
-      setError('GitHub-Benutzer nicht gefunden oder API-Limit erreicht');
+      setError(t('github.error'));
     } finally {
       setIsLoading(false);
     }
@@ -55,7 +57,7 @@ const GitHubConfig: React.FC<GitHubConfigProps> = ({ onUsernameChange, currentUs
       <button
         onClick={() => setIsOpen(true)}
         className="inline-flex items-center gap-2 px-3 py-2 bg-white/80 rounded-full shadow-sm hover:bg-white hover:shadow-md transition-all text-sm text-gray-700"
-        title="GitHub-Projekte konfigurieren"
+        title={t('github.integration')}
       >
         <Github className="w-4 h-4" />
         <Settings className="w-4 h-4" />
@@ -67,20 +69,20 @@ const GitHubConfig: React.FC<GitHubConfigProps> = ({ onUsernameChange, currentUs
     <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 max-w-md">
       <div className="flex items-center gap-3 mb-4">
         <Github className="w-5 h-5 text-gray-700" />
-        <h3 className="font-semibold text-gray-800">GitHub Integration</h3>
+        <h3 className="font-semibold text-gray-800">{t('github.integration')}</h3>
       </div>
       
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            GitHub Benutzername
+            {t('github.username')}
           </label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="z.B. octocat"
+            placeholder={t('github.placeholder')}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             disabled={isLoading}
           />
@@ -100,7 +102,7 @@ const GitHubConfig: React.FC<GitHubConfigProps> = ({ onUsernameChange, currentUs
             ) : (
               <Save className="w-4 h-4" />
             )}
-            Speichern
+            {t('github.save')}
           </button>
           <button
             onClick={() => {
@@ -110,7 +112,7 @@ const GitHubConfig: React.FC<GitHubConfigProps> = ({ onUsernameChange, currentUs
             }}
             className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            Abbrechen
+            {t('github.cancel')}
           </button>
         </div>
       </div>

@@ -1,11 +1,13 @@
-
 import React from 'react';
 import MinimalHeader from '@/components/MinimalHeader';
 import Footer from '@/components/Footer';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Imprint = () => {
+  const { t, language } = useLanguage();
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
       <MinimalHeader />
@@ -17,56 +19,89 @@ const Imprint = () => {
             className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Zurück zur Startseite
+            {t('legal.backToHome')}
           </Link>
         </div>
 
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8">
           <h1 className="text-3xl font-bold mb-8 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-            Impressum
+            {language === 'de' ? 'Impressum' : 'Legal Notice'}
           </h1>
 
           <div className="space-y-6 text-gray-700">
             <section>
-              <h2 className="text-xl font-semibold mb-3 text-gray-800">Angaben gemäß § 5 TMG</h2>
+              <h2 className="text-xl font-semibold mb-3 text-gray-800">
+                {language === 'de' ? 'Angaben gemäß § 5 TMG' : 'Information according to § 5 TMG'}
+              </h2>
               <div className="space-y-2">
                 <p><strong>Till Freitag Consulting GmbH</strong></p>
-                <p>Musterstraße 123</p>
-                <p>12345 Musterstadt</p>
-                <p>Deutschland</p>
+                <p>{language === 'de' ? 'Musterstraße 123' : 'Sample Street 123'}</p>
+                <p>{language === 'de' ? '12345 Musterstadt' : '12345 Sample City'}</p>
+                <p>{language === 'de' ? 'Deutschland' : 'Germany'}</p>
               </div>
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold mb-3 text-gray-800">Kontakt</h2>
+              <h2 className="text-xl font-semibold mb-3 text-gray-800">
+                {language === 'de' ? 'Kontakt' : 'Contact'}
+              </h2>
               <div className="space-y-2">
-                <p><strong>Telefon:</strong> +49 (0) 123 456789</p>
+                <p><strong>{language === 'de' ? 'Telefon:' : 'Phone:'}</strong> +49 (0) 123 456789</p>
                 <p><strong>E-Mail:</strong> info@tillfreitag-consulting.de</p>
               </div>
             </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3 text-gray-800">Registereintrag</h2>
-              <div className="space-y-2">
-                <p><strong>Registergericht:</strong> Amtsgericht Musterstadt</p>
-                <p><strong>Registernummer:</strong> HRB 12345</p>
-              </div>
-            </section>
+            {language === 'de' ? (
+              <>
+                <section>
+                  <h2 className="text-xl font-semibold mb-3 text-gray-800">Registereintrag</h2>
+                  <div className="space-y-2">
+                    <p><strong>Registergericht:</strong> Amtsgericht Musterstadt</p>
+                    <p><strong>Registernummer:</strong> HRB 12345</p>
+                  </div>
+                </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3 text-gray-800">Umsatzsteuer-ID</h2>
-              <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:</p>
-              <p><strong>DE123456789</strong></p>
-            </section>
+                <section>
+                  <h2 className="text-xl font-semibold mb-3 text-gray-800">Umsatzsteuer-ID</h2>
+                  <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:</p>
+                  <p><strong>DE123456789</strong></p>
+                </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3 text-gray-800">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-              <div className="space-y-2">
-                <p><strong>Till Freitag</strong></p>
-                <p>Musterstraße 123</p>
-                <p>12345 Musterstadt</p>
-              </div>
-            </section>
+                <section>
+                  <h2 className="text-xl font-semibold mb-3 text-gray-800">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                  <div className="space-y-2">
+                    <p><strong>Till Freitag</strong></p>
+                    <p>Musterstraße 123</p>
+                    <p>12345 Musterstadt</p>
+                  </div>
+                </section>
+              </>
+            ) : (
+              <>
+                <section>
+                  <h2 className="text-xl font-semibold mb-3 text-gray-800">Commercial Register</h2>
+                  <div className="space-y-2">
+                    <p><strong>Register Court:</strong> District Court Sample City</p>
+                    <p><strong>Register Number:</strong> HRB 12345</p>
+                  </div>
+                </section>
+
+                <section>
+                  <h2 className="text-xl font-semibold mb-3 text-gray-800">VAT ID</h2>
+                  <p>Value added tax identification number according to § 27 a of the German VAT Act:</p>
+                  <p><strong>DE123456789</strong></p>
+                </section>
+
+                <section>
+                  <h2 className="text-xl font-semibold mb-3 text-gray-800">Responsible for Content</h2>
+                  <div className="space-y-2">
+                    <p><strong>Till Freitag</strong></p>
+                    <p>Sample Street 123</p>
+                    <p>12345 Sample City</p>
+                  </div>
+                </section>
+              </>
+            )}
 
             <section>
               <h2 className="text-xl font-semibold mb-3 text-gray-800">Haftungsausschluss</h2>

@@ -1,19 +1,22 @@
 
 import React from 'react';
 import { Heart, Star, Book } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const AboutSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-20 px-6 bg-white/50 backdrop-blur-sm" id="ueber-mich">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-pink-100 rounded-full">
             <Heart className="w-4 h-4 text-pink-600" />
-            <span className="text-sm font-medium text-pink-800">Hinter den Kulissen</span>
+            <span className="text-sm font-medium text-pink-800">{t('about.badge')}</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            Die Geschichte dahinter
+            {t('about.title')}
           </h2>
         </div>
 
@@ -23,36 +26,30 @@ const AboutSection = () => {
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl">
               <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
                 <Star className="w-5 h-5 text-yellow-500" />
-                Warum dieses Portfolio existiert
+                {t('about.why.title')}
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Jedes Lovable-Projekt ist ein kleines Experiment, ein Stück Herzblut, das in Code verwandelt wurde. 
-                Dieses Portfolio ist mein Weg, diese digitalen Träume zu sammeln und zu teilen – 
-                nicht perfekt, aber authentisch und voller Liebe zum Detail.
+                {t('about.why.text')}
               </p>
             </div>
 
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl">
               <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
                 <Book className="w-5 h-5 text-blue-500" />
-                Für wen es gedacht ist
+                {t('about.for.title')}
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Für alle, die an der Magie der digitalen Gestaltung interessiert sind. 
-                Für Inspiration Suchende, für Lovable-Enthusiasten und für alle, 
-                die glauben, dass Technologie schön und menschlich sein kann.
+                {t('about.for.text')}
               </p>
             </div>
 
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl">
               <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
                 <Heart className="w-5 h-5 text-green-500" />
-                Was es einzigartig macht
+                {t('about.unique.title')}
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Es ist nicht nur eine Projektsammlung – es ist ein lebendiges Tagebuch 
-                meiner kreativen Reise. Jedes Projekt zeigt nicht nur das Endergebnis, 
-                sondern auch die Gedanken, Emotionen und kleinen Entdeckungen dahinter.
+                {t('about.unique.text')}
               </p>
             </div>
           </div>
@@ -69,25 +66,25 @@ const AboutSection = () => {
                 </div>
                 
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                  Made with Love
+                  {t('about.madeWith')}
                 </h3>
                 
                 <p className="text-gray-600 mb-6">
-                  Jedes Pixel, jede Animation, jede Interaktion wurde mit Liebe zum Detail gestaltet.
+                  {t('about.subtitle')}
                 </p>
                 
                 <div className="space-y-3">
                   <div className="flex items-center justify-between bg-white/70 rounded-lg px-4 py-2">
-                    <span className="text-sm text-gray-600">Kaffee getrunken</span>
-                    <span className="text-sm font-semibold">∞ Tassen</span>
+                    <span className="text-sm text-gray-600">{t('about.stats.coffee')}</span>
+                    <span className="text-sm font-semibold">{t('about.stats.coffeeCount')}</span>
                   </div>
                   <div className="flex items-center justify-between bg-white/70 rounded-lg px-4 py-2">
-                    <span className="text-sm text-gray-600">Code-Zeilen</span>
-                    <span className="text-sm font-semibold">10k+</span>
+                    <span className="text-sm text-gray-600">{t('about.stats.lines')}</span>
+                    <span className="text-sm font-semibold">{t('about.stats.linesCount')}</span>
                   </div>
                   <div className="flex items-center justify-between bg-white/70 rounded-lg px-4 py-2">
-                    <span className="text-sm text-gray-600">Stunden Liebe</span>
-                    <span className="text-sm font-semibold">500+</span>
+                    <span className="text-sm text-gray-600">{t('about.stats.hours')}</span>
+                    <span className="text-sm font-semibold">{t('about.stats.hoursCount')}</span>
                   </div>
                 </div>
               </div>

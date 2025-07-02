@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Star, Heart, ExternalLink, Github } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Project {
   id: number;
@@ -22,6 +22,8 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = false }) => {
+  const { t } = useLanguage();
+  
   const handleExplore = () => {
     if (project.liveUrl) {
       window.open(project.liveUrl, '_blank');
@@ -96,7 +98,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
         <div className="space-y-2">
           <h4 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
             <Star className="w-4 h-4 text-yellow-500" />
-            {compact ? 'Tools' : 'Tools & Technologien'}
+            {compact ? t('projects.toolsCompact') : t('projects.tools')}
           </h4>
           <div className="flex flex-wrap gap-2">
             {(compact ? project.tools.slice(0, 2) : project.tools).map((tool) => (
@@ -119,7 +121,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
         <div className="space-y-2">
           <h4 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
             <Heart className="w-4 h-4 text-pink-500" />
-            Lovable Aspekte
+            {t('projects.lovableAspects')}
           </h4>
           <div className="space-y-1">
             {(compact ? project.lovableAspects.slice(0, 2) : project.lovableAspects).map((aspect) => (
@@ -131,7 +133,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
             {compact && project.lovableAspects.length > 2 && (
               <div className="flex items-center gap-2 text-xs text-gray-500">
                 <span className="w-1.5 h-1.5 bg-gray-300 rounded-full flex-shrink-0"></span>
-                <span>+{project.lovableAspects.length - 2} weitere</span>
+                <span>+{project.lovableAspects.length - 2} {t('projects.moreAspects')}</span>
               </div>
             )}
           </div>
@@ -162,7 +164,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
               compact ? 'py-2 text-sm' : 'py-3'
             }`}
           >
-            {project.liveUrl ? 'Live Demo →' : 'Code ansehen →'}
+            {project.liveUrl ? t('projects.liveDemo') : t('projects.viewCode')}
           </button>
         </div>
       </div>

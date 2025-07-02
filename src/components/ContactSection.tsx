@@ -1,8 +1,10 @@
 
 import React, { useState } from 'react';
 import { Heart, Star, Book, MessageCircle } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactSection = () => {
+  const { t } = useLanguage();
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
 
@@ -11,7 +13,7 @@ const ContactSection = () => {
     // Hier würdest du die Nachricht verarbeiten
     console.log('Nachricht gesendet:', { email, message });
     // Für jetzt zeigen wir nur eine Bestätigung
-    alert('Danke für deine Nachricht! 💜');
+    alert(t('contact.form.success'));
     setMessage('');
     setEmail('');
   };
@@ -22,16 +24,15 @@ const ContactSection = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-blue-100 rounded-full">
             <MessageCircle className="w-4 h-4 text-blue-600" />
-            <span className="text-sm font-medium text-blue-800">Lass uns sprechen</span>
+            <span className="text-sm font-medium text-blue-800">{t('contact.badge')}</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            Schreib mir! ✨
+            {t('contact.title')}
           </h2>
           
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Feedback, Ideen, Fragen oder einfach nur ein "Hallo" – 
-            ich freue mich über jede Nachricht und jeden Austausch!
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -40,13 +41,13 @@ const ContactSection = () => {
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
               <Heart className="w-6 h-6 text-pink-500" />
-              Digitales Gästebuch
+              {t('contact.form.title')}
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Deine E-Mail
+                  {t('contact.form.email')}
                 </label>
                 <input
                   type="email"
@@ -54,14 +55,14 @@ const ContactSection = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                  placeholder="deine@email.de"
+                  placeholder={t('contact.form.emailPlaceholder')}
                   required
                 />
               </div>
               
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Deine Nachricht
+                  {t('contact.form.message')}
                 </label>
                 <textarea
                   id="message"
@@ -69,7 +70,7 @@ const ContactSection = () => {
                   onChange={(e) => setMessage(e.target.value)}
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"
-                  placeholder="Erzähl mir von deinen Ideen, Feedback oder einfach was dir durch den Kopf geht..."
+                  placeholder={t('contact.form.messagePlaceholder')}
                   required
                 />
               </div>
@@ -78,7 +79,7 @@ const ContactSection = () => {
                 type="submit"
                 className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
-                Nachricht mit Liebe senden 💜
+                {t('contact.form.submit')}
               </button>
             </form>
           </div>
@@ -88,41 +89,37 @@ const ContactSection = () => {
             <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-2xl border border-yellow-200">
               <Star className="w-8 h-8 text-yellow-500 mb-4" />
               <h4 className="text-lg font-semibold text-gray-800 mb-2">
-                Inspiration gefällig?
+                {t('contact.inspiration.title')}
               </h4>
               <p className="text-gray-600">
-                Teile deine eigenen Lovable-Experimente! Ich liebe es, 
-                zu sehen, was andere kreative Köpfe erschaffen.
+                {t('contact.inspiration.text')}
               </p>
             </div>
 
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-200">
               <Book className="w-8 h-8 text-green-500 mb-4" />
               <h4 className="text-lg font-semibold text-gray-800 mb-2">
-                Zusammenarbeiten?
+                {t('contact.collaborate.title')}
               </h4>
               <p className="text-gray-600">
-                Hast du eine Idee für ein gemeinsames Projekt? 
-                Lass uns digitale Träume zusammen wahr werden lassen!
+                {t('contact.collaborate.text')}
               </p>
             </div>
 
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl border border-purple-200">
               <Heart className="w-8 h-8 text-purple-500 mb-4" />
               <h4 className="text-lg font-semibold text-gray-800 mb-2">
-                Einfach Hallo sagen
+                {t('contact.hello.title')}
               </h4>
               <p className="text-gray-600">
-                Manchmal sind die schönsten Gespräche die, 
-                die ohne besonderen Grund entstehen. 
-                Schreib einfach "Hi!" ✨
+                {t('contact.hello.text')}
               </p>
             </div>
 
             {/* Social Links Platzhalter */}
             <div className="text-center pt-6">
               <p className="text-sm text-gray-500 mb-4">
-                Oder folge mir hier:
+                {t('contact.follow')}
               </p>
               <div className="flex justify-center gap-4">
                 <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
