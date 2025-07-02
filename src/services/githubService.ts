@@ -67,6 +67,72 @@ class GitHubService {
     return null;
   }
 
+  private generateDynamicDescription(repo: GitHubRepo): string {
+    const name = repo.name.toLowerCase();
+    const topics = repo.topics || [];
+    const hasLiveUrl = !!repo.homepage;
+    
+    // Create project-specific descriptions based on patterns
+    if (name.includes('portfolio') || name.includes('website')) {
+      return hasLiveUrl 
+        ? `Ein persönliches Portfolio, das moderne Webtechnologien und ansprechendes Design vereint. Besuche die Live-Demo, um die vollständige Erfahrung zu erleben.`
+        : `Ein persönliches Portfolio-Projekt, das moderne Webtechnologien und durchdachtes Design showcased.`;
+    }
+    
+    if (name.includes('shop') || name.includes('ecommerce') || topics.includes('ecommerce')) {
+      return hasLiveUrl
+        ? `Eine vollständige E-Commerce-Lösung mit moderner Benutzeroberfläche. Erlebe die nahtlose Shopping-Experience in der Live-Demo.`
+        : `Ein E-Commerce-Projekt mit Fokus auf Benutzerfreundlichkeit und moderne Technologien.`;
+    }
+    
+    if (name.includes('dashboard') || topics.includes('dashboard')) {
+      return hasLiveUrl
+        ? `Ein interaktives Dashboard mit Echtzeitdaten und intuitiver Bedienung. Teste die Funktionen in der Live-Anwendung.`
+        : `Ein Dashboard-Projekt mit Fokus auf Datenvisualisierung und Benutzerinteraktion.`;
+    }
+    
+    if (name.includes('chat') || name.includes('message') || topics.includes('chat')) {
+      return hasLiveUrl
+        ? `Eine moderne Chat-Anwendung mit Echtzeitkommunikation. Probiere die Live-Demo aus und erlebe nahtlose Kommunikation.`
+        : `Eine Chat-Anwendung mit Fokus auf Echtzeitkommunikation und moderne UI.`;
+    }
+    
+    if (name.includes('blog') || topics.includes('blog')) {
+      return hasLiveUrl
+        ? `Ein modernes Blog-System mit elegantem Design und optimaler Leseerfahrung. Besuche die Live-Version für den vollen Eindruck.`
+        : `Ein Blog-Projekt mit Fokus auf Content-Management und Lesererfahrung.`;
+    }
+    
+    if (name.includes('game') || topics.includes('game')) {
+      return hasLiveUrl
+        ? `Ein interaktives Browser-Spiel mit fesselndem Gameplay. Spiele direkt in der Live-Demo und erlebe den Spaß!`
+        : `Ein Browser-Spiel-Projekt mit Fokus auf interaktive Benutzerinteraktion.`;
+    }
+    
+    if (name.includes('tool') || name.includes('utility') || topics.includes('utility')) {
+      return hasLiveUrl
+        ? `Ein praktisches Web-Tool, das den Alltag erleichtert. Teste die Funktionalität direkt in der Live-Anwendung.`
+        : `Ein nützliches Tool-Projekt mit Fokus auf praktische Anwendbarkeit.`;
+    }
+    
+    if (topics.includes('react') || topics.includes('nextjs') || topics.includes('vue')) {
+      return hasLiveUrl
+        ? `Eine moderne Webanwendung, die modernste Frontend-Technologien nutzt. Erlebe die Performance und das Design in der Live-Demo.`
+        : `Eine moderne Webanwendung mit Fokus auf Performance und Benutzererfahrung.`;
+    }
+    
+    // Fallback with original description if good, otherwise generic
+    if (repo.description && repo.description.length > 20) {
+      return hasLiveUrl
+        ? `${repo.description} Besuche die Live-Demo für die vollständige Erfahrung.`
+        : repo.description;
+    }
+    
+    return hasLiveUrl
+      ? `Ein spannendes Projekt aus meiner Entwicklung. Teste die Live-Anwendung und entdecke die Funktionen selbst.`
+      : `Ein spannendes Projekt aus meiner Entwicklung mit durchdachter Umsetzung.`;
+  }
+
   transformRepoToProject(repo: GitHubRepo): ProjectFromGitHub {
     // Try to use local image first, fallback to generated image
     const localImagePath = this.getLocalImagePath(repo.name);
@@ -76,7 +142,7 @@ class GitHubService {
     return {
       id: repo.id,
       title: this.formatRepoName(repo.name),
-      description: repo.description || 'Ein spannendes Projekt aus meiner Entwicklung',
+      description: this.generateDynamicDescription(repo),
       category: this.determineCategory(repo),
       tools: this.extractTools(repo),
       lovableAspects: this.generateLovableAspects(repo),
@@ -147,6 +213,10 @@ class GitHubService {
   private generateLovableAspects(repo: GitHubRepo): string[] {
     const aspects = [];
     
+    if (repo.homepage) {
+      aspects.push('Live Demo verfügbar');
+    }
+    
     if (repo.stargazers_count > 0) {
       aspects.push(`${repo.stargazers_count} GitHub Stars`);
     }
@@ -160,10 +230,6 @@ class GitHubService {
     
     if (repo.topics?.includes('performance')) {
       aspects.push('Performance-optimiert');
-    }
-    
-    if (repo.homepage) {
-      aspects.push('Live Demo verfügbar');
     }
     
     // Add some default lovable aspects

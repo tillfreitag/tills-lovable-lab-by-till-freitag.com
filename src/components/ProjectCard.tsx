@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Star, Heart, ExternalLink, Github } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -25,6 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
   const { t } = useLanguage();
   
   const handleExplore = () => {
+    // Prioritize live URL over GitHub URL
     if (project.liveUrl) {
       window.open(project.liveUrl, '_blank');
     } else if (project.githubUrl) {
@@ -53,20 +55,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
           {project.category}
         </div>
         
-        {/* GitHub & Live Links */}
+        {/* Links - Prioritize Live Demo */}
         <div className="absolute top-4 left-4 flex gap-2">
-          {project.githubUrl && project.githubUrl !== '#' && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-black/60 backdrop-blur-sm text-white p-2 rounded-full hover:bg-black/80 transition-colors"
-              title="GitHub Repository"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Github className="w-4 h-4" />
-            </a>
-          )}
           {project.liveUrl && (
             <a
               href={project.liveUrl}
@@ -77,6 +67,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
               onClick={(e) => e.stopPropagation()}
             >
               <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
+          {project.githubUrl && project.githubUrl !== '#' && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-black/60 backdrop-blur-sm text-white p-2 rounded-full hover:bg-black/80 transition-colors"
+              title="GitHub Repository"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Github className="w-4 h-4" />
             </a>
           )}
         </div>
@@ -156,7 +158,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
           )}
         </div>
 
-        {/* Hover-Aktion */}
+        {/* Hover-Aktion - Prioritize Live Demo */}
         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-4">
           <button 
             onClick={handleExplore}
