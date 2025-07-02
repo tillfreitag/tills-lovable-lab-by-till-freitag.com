@@ -9,7 +9,7 @@ const MinimalHeader = () => {
               <Heart className="w-4 h-4 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Lovable Lab</h1>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Till's Lovable Lab</h1>
               <p className="text-sm text-gray-600">Lovable-Projekte mit Gefühl ✨</p>
             </div>
           </div>
