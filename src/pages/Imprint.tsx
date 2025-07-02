@@ -35,8 +35,8 @@ const Imprint = () => {
               </h2>
               <div className="space-y-2">
                 <p><strong>Till Freitag Consulting GmbH</strong></p>
-                <p>{language === 'de' ? 'Musterstraße 123' : 'Sample Street 123'}</p>
-                <p>{language === 'de' ? '12345 Musterstadt' : '12345 Sample City'}</p>
+                <p>{language === 'de' ? 'Friedrichstr. 155' : 'Friedrichstr. 155'}</p>
+                <p>{language === 'de' ? '10117 Berlin' : '10117 Berlin'}</p>
                 <p>{language === 'de' ? 'Deutschland' : 'Germany'}</p>
               </div>
             </section>
