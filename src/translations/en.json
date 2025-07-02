@@ -25,18 +25,7 @@
     "lastUpdate": "Last updated:",
     "projectsFrom": "projects from",
     "footer": "Projects directly from my GitHub",
-    "footerFallback": "And this is just the beginning... ✨",
-    "liveSync": "Live sync with GitHub",
-    "inProgress": "More projects in progress"
-  },
-  "github": {
-    "integration": "GitHub Integration",
-    "username": "GitHub Username",
-    "placeholder": "e.g. octocat",
-    "save": "Save",
-    "cancel": "Cancel",
-    "error": "GitHub user not found or API limit reached",
-    "required": "Please enter a GitHub username"
+    "liveSync": "Live sync with GitHub"
   },
   "about": {
     "badge": "Behind the scenes",

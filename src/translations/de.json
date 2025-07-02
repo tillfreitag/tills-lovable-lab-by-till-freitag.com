@@ -25,18 +25,7 @@
     "lastUpdate": "Zuletzt aktualisiert:",
     "projectsFrom": "Projekte von",
     "footer": "Projekte direkt aus meinem GitHub",
-    "footerFallback": "Und das ist erst der Anfang... ✨",
-    "liveSync": "Live-Sync mit GitHub",
-    "inProgress": "Weitere Projekte in Arbeit"
-  },
-  "github": {
-    "integration": "GitHub Integration",
-    "username": "GitHub Benutzername",
-    "placeholder": "z.B. octocat",
-    "save": "Speichern",
-    "cancel": "Abbrechen",
-    "error": "GitHub-Benutzer nicht gefunden oder API-Limit erreicht",
-    "required": "Bitte gib einen GitHub-Benutzernamen ein"
+    "liveSync": "Live-Sync mit GitHub"
   },
   "about": {
     "badge": "Hinter den Kulissen",

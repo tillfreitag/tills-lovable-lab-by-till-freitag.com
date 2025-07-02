@@ -27,20 +27,11 @@ export interface ProjectFromGitHub {
 
 class GitHubService {
   private baseUrl = 'https://api.github.com';
-  private username: string | null = null;
+  private username = 'tillfreitag'; // Hardcoded username
 
-  setUsername(username: string) {
-    this.username = username;
-  }
-
-  async fetchUserRepos(username?: string): Promise<GitHubRepo[]> {
-    const user = username || this.username;
-    if (!user) {
-      throw new Error('GitHub username not provided');
-    }
-
+  async fetchUserRepos(): Promise<GitHubRepo[]> {
     try {
-      const response = await fetch(`${this.baseUrl}/users/${user}/repos?sort=updated&per_page=50`);
+      const response = await fetch(`${this.baseUrl}/users/${this.username}/repos?sort=updated&per_page=50`);
       if (!response.ok) {
         throw new Error(`GitHub API error: ${response.status}`);
       }
@@ -51,9 +42,9 @@ class GitHubService {
     }
   }
 
-  async fetchRepoReadme(username: string, repoName: string): Promise<string | null> {
+  async fetchRepoReadme(repoName: string): Promise<string | null> {
     try {
-      const response = await fetch(`${this.baseUrl}/repos/${username}/${repoName}/readme`);
+      const response = await fetch(`${this.baseUrl}/repos/${this.username}/${repoName}/readme`);
       if (!response.ok) return null;
       
       const data = await response.json();
@@ -65,9 +56,22 @@ class GitHubService {
     }
   }
 
+  private getLocalImagePath(repoName: string): string | null {
+    // Check for common image extensions
+    const extensions = ['jpg', 'jpeg', 'png', 'webp'];
+    for (const ext of extensions) {
+      const imagePath = `/images/projects/${repoName}.${ext}`;
+      // Return the path - we'll let the browser handle if it exists
+      return imagePath;
+    }
+    return null;
+  }
+
   transformRepoToProject(repo: GitHubRepo): ProjectFromGitHub {
-    // Generate a placeholder image based on repo name
+    // Try to use local image first, fallback to generated image
+    const localImagePath = this.getLocalImagePath(repo.name);
     const imageId = Math.abs(repo.name.split('').reduce((a, b) => a + b.charCodeAt(0), 0)) % 1000;
+    const fallbackImage = `https://picsum.photos/600/400?random=${imageId}`;
     
     return {
       id: repo.id,
@@ -76,7 +80,7 @@ class GitHubService {
       category: this.determineCategory(repo),
       tools: this.extractTools(repo),
       lovableAspects: this.generateLovableAspects(repo),
-      image: `https://picsum.photos/600/400?random=${imageId}`,
+      image: localImagePath || fallbackImage,
       tags: repo.topics || [],
       githubUrl: repo.html_url,
       liveUrl: repo.homepage || undefined
