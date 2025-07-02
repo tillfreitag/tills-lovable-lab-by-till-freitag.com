@@ -30,12 +30,11 @@ const GitHubConfig: React.FC<GitHubConfigProps> = ({ onUsernameChange, currentUs
     setError(null);
 
     try {
-      // Test the username by trying to fetch repos
-      await githubService.fetchUserRepos(username.trim());
-      githubService.setUsername(username.trim());
+      // Test the connection by trying to fetch repos (no username parameter needed)
+      await githubService.fetchUserRepos();
       onUsernameChange(username.trim());
       
-      // Save to localStorage
+      // Save to localStorage (even though it's not used anymore)
       localStorage.setItem('github-username', username.trim());
       
       setIsOpen(false);
