@@ -1,22 +1,10 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Heart, Star, Book, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactSection = () => {
   const { t } = useLanguage();
-  const [message, setMessage] = useState('');
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Hier würdest du die Nachricht verarbeiten
-    console.log('Nachricht gesendet:', { email, message });
-    // Für jetzt zeigen wir nur eine Bestätigung
-    alert(t('contact.form.success'));
-    setMessage('');
-    setEmail('');
-  };
 
   return (
     <section className="py-20 px-6" id="kontakt">
@@ -37,51 +25,22 @@ const ContactSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Kontaktformular */}
+          {/* Monday.com Form */}
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
               <Heart className="w-6 h-6 text-pink-500" />
               {t('contact.form.title')}
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('contact.form.email')}
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                  placeholder={t('contact.form.emailPlaceholder')}
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('contact.form.message')}
-                </label>
-                <textarea
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"
-                  placeholder={t('contact.form.messagePlaceholder')}
-                  required
-                />
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              >
-                {t('contact.form.submit')}
-              </button>
-            </form>
+            <div className="w-full">
+              <iframe 
+                src="https://forms.monday.com/forms/embed/a8ce15853bfc10ad2292cc6f234b5345?r=euc1" 
+                width="100%" 
+                height="500" 
+                style={{ border: 0, boxShadow: '5px 5px 56px 0px rgba(0,0,0,0.25)', borderRadius: '12px' }}
+                title="Contact Form"
+              />
+            </div>
           </div>
 
           {/* Inspiration & Ermutigung */}
