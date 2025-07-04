@@ -12,7 +12,7 @@ class GitHubService {
     return githubApi.fetchRepoReadme(repoName);
   }
 
-  transformRepoToProject(repo: GitHubRepo): ProjectFromGitHub {
+  async transformRepoToProject(repo: GitHubRepo): Promise<ProjectFromGitHub> {
     return projectTransformer.transformRepoToProject(repo);
   }
 }

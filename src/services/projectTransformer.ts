@@ -1,9 +1,9 @@
-
 import { GitHubRepo, ProjectFromGitHub } from '@/types/github';
 
 class ProjectTransformer {
-  private getLocalImagePath(repo: GitHubRepo): string | null {
+  private async getGitHubImagePath(repo: GitHubRepo): Promise<string | null> {
     const repoName = repo.name;
+    const username = 'tillfreitag'; // Should match the GitHub username
     const extensions = ['jpg', 'jpeg', 'png', 'webp'];
     
     // Priority order for image detection:
@@ -12,8 +12,16 @@ class ProjectTransformer {
       try {
         const domain = new URL(repo.homepage).hostname;
         for (const ext of extensions) {
-          const imagePath = `/images/projects/${domain}.${ext}`;
-          return imagePath;
+          const imagePath = `https://raw.githubusercontent.com/${username}/${repoName}/main/public/${domain}.${ext}`;
+          // Check if image exists by attempting to fetch it
+          try {
+            const response = await fetch(imagePath, { method: 'HEAD' });
+            if (response.ok) {
+              return imagePath;
+            }
+          } catch (e) {
+            // Continue to next attempt
+          }
         }
       } catch (e) {
         // Invalid URL, continue to next method
@@ -22,8 +30,15 @@ class ProjectTransformer {
     
     // 2. Try repository name
     for (const ext of extensions) {
-      const imagePath = `/images/projects/${repoName}.${ext}`;
-      return imagePath;
+      const imagePath = `https://raw.githubusercontent.com/${username}/${repoName}/main/public/${repoName}.${ext}`;
+      try {
+        const response = await fetch(imagePath, { method: 'HEAD' });
+        if (response.ok) {
+          return imagePath;
+        }
+      } catch (e) {
+        // Continue to next attempt
+      }
     }
     
     // 3. Try common variations
@@ -35,8 +50,15 @@ class ProjectTransformer {
     
     for (const variation of variations) {
       for (const ext of extensions) {
-        const imagePath = `/images/projects/${variation}.${ext}`;
-        return imagePath;
+        const imagePath = `https://raw.githubusercontent.com/${username}/${repoName}/main/public/${variation}.${ext}`;
+        try {
+          const response = await fetch(imagePath, { method: 'HEAD' });
+          if (response.ok) {
+            return imagePath;
+          }
+        } catch (e) {
+          // Continue to next attempt
+        }
       }
     }
     
@@ -204,9 +226,9 @@ class ProjectTransformer {
     return aspects.slice(0, 4);
   }
 
-  transformRepoToProject(repo: GitHubRepo): ProjectFromGitHub {
-    // Try to use local image first, fallback to generated image
-    const localImagePath = this.getLocalImagePath(repo);
+  async transformRepoToProject(repo: GitHubRepo): Promise<ProjectFromGitHub> {
+    // Try to use GitHub image first, fallback to generated image
+    const githubImagePath = await this.getGitHubImagePath(repo);
     const imageId = Math.abs(repo.name.split('').reduce((a, b) => a + b.charCodeAt(0), 0)) % 1000;
     const fallbackImage = `https://picsum.photos/600/400?random=${imageId}`;
     
@@ -217,7 +239,7 @@ class ProjectTransformer {
       category: this.determineCategory(repo),
       tools: this.extractTools(repo),
       lovableAspects: this.generateLovableAspects(repo),
-      image: localImagePath || fallbackImage,
+      image: githubImagePath || fallbackImage,
       tags: repo.topics || [],
       githubUrl: repo.html_url,
       liveUrl: repo.homepage || undefined

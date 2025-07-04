@@ -35,10 +35,14 @@ const ProjectGallery = () => {
     setError(null);
     try {
       const repos = await githubService.fetchUserRepos();
-      const projectData = repos
+      const filteredRepos = repos
         .filter(repo => !repo.fork) // Exclude forked repositories
-        .slice(0, 12) // Limit to 12 most recent projects
-        .map(repo => githubService.transformRepoToProject(repo));
+        .slice(0, 12); // Limit to 12 most recent projects
+      
+      // Transform repos to projects with async image loading
+      const projectData = await Promise.all(
+        filteredRepos.map(repo => githubService.transformRepoToProject(repo))
+      );
       
       setProjects(projectData);
       setLastRefresh(new Date());
