@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { LayoutGrid, Grid3X3, Grid2X2, RefreshCw, Loader2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ProjectCard from './ProjectCard';
-import { githubService, ProjectFromGitHub } from '@/services/githubService';
+import { githubService } from '@/services/githubService';
+import { ProjectFromGitHub } from '@/types/github';
 
 const ProjectGallery = () => {
   const { t } = useLanguage();
