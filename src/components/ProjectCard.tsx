@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Star, Heart, ExternalLink, Github } from 'lucide-react';
+import { Star, Heart, ExternalLink, Github, Calendar, Trophy } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Project {
@@ -14,15 +14,26 @@ interface Project {
   tags: string[];
   githubUrl?: string;
   liveUrl?: string;
+  created_at?: string;
+  updated_at?: string;
+  stargazers_count?: number;
 }
 
 interface ProjectCardProps {
   project: Project;
   index: number;
   compact?: boolean;
+  onTechnologyClick?: (technology: string) => void;
+  selectedTechnology?: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = false }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ 
+  project, 
+  index, 
+  compact = false, 
+  onTechnologyClick,
+  selectedTechnology 
+}) => {
   const { t } = useLanguage();
   
   const handleExplore = () => {
@@ -31,6 +42,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
       window.open(project.liveUrl, '_blank');
     } else if (project.githubUrl) {
       window.open(project.githubUrl, '_blank');
+    }
+  };
+
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return null;
+    return new Date(dateString).toLocaleDateString('de-DE', {
+      year: 'numeric',
+      month: 'short'
+    });
+  };
+
+  const handleTechClick = (tech: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onTechnologyClick) {
+      onTechnologyClick(tech);
     }
   };
 
@@ -55,8 +81,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
           {project.category}
         </div>
         
-        {/* Links - Prioritize Live Demo */}
-        <div className="absolute top-4 left-4 flex gap-2">
+        {/* Project Quality Indicators */}
+        <div className="absolute top-4 left-4 flex flex-col gap-2">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
@@ -81,22 +107,49 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
               <Github className="w-4 h-4" />
             </a>
           )}
+          {project.stargazers_count && project.stargazers_count > 0 && (
+            <div className="bg-yellow-500/80 backdrop-blur-sm text-white p-2 rounded-full" title={`${project.stargazers_count} GitHub Stars`}>
+              <div className="flex items-center gap-1">
+                <Trophy className="w-3 h-3" />
+                <span className="text-xs font-medium">{project.stargazers_count}</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
       {/* Projekt-Info */}
       <div className={compact ? 'space-y-3' : 'space-y-4'}>
-        <h3 className={`font-bold text-gray-800 group-hover:text-purple-600 transition-colors ${
-          compact ? 'text-lg' : 'text-2xl'
-        }`}>
-          {project.title}
-        </h3>
+        <div className="flex items-start justify-between gap-2">
+          <h3 className={`font-bold text-gray-800 group-hover:text-purple-600 transition-colors ${
+            compact ? 'text-lg' : 'text-2xl'
+          }`}>
+            {project.title}
+          </h3>
+          
+          {/* Project Timeline */}
+          {(project.created_at || project.updated_at) && (
+            <div className="flex flex-col items-end text-xs text-gray-500">
+              {project.created_at && (
+                <div className="flex items-center gap-1" title="Created">
+                  <Calendar className="w-3 h-3" />
+                  <span>{formatDate(project.created_at)}</span>
+                </div>
+              )}
+              {project.updated_at && project.updated_at !== project.created_at && (
+                <div className="text-green-600 font-medium" title="Last updated">
+                  Updated {formatDate(project.updated_at)}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
         
         <p className={`text-gray-600 leading-relaxed ${compact ? 'text-sm line-clamp-2' : ''}`}>
           {project.description}
         </p>
 
-        {/* Tools - kompakt für kleine Karten */}
+        {/* Tools - clickable for filtering */}
         <div className="space-y-2">
           <h4 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
             <Star className="w-4 h-4 text-yellow-500" />
@@ -104,12 +157,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, compact = fal
           </h4>
           <div className="flex flex-wrap gap-2">
             {(compact ? project.tools.slice(0, 2) : project.tools).map((tool) => (
-              <span 
+              <button
                 key={tool}
-                className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium"
+                onClick={(e) => handleTechClick(tool, e)}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
+                  selectedTechnology === tool
+                    ? 'bg-blue-500 text-white shadow-sm'
+                    : 'bg-blue-100 text-blue-800 hover:bg-blue-200 hover:shadow-sm'
+                }`}
+                title={`Filter by ${tool}`}
               >
                 {tool}
-              </span>
+              </button>
             ))}
             {compact && project.tools.length > 2 && (
               <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">

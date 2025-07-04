@@ -242,7 +242,10 @@ class ProjectTransformer {
       image: githubImagePath || fallbackImage,
       tags: repo.topics || [],
       githubUrl: repo.html_url,
-      liveUrl: repo.homepage || undefined
+      liveUrl: repo.homepage || undefined,
+      created_at: repo.created_at,
+      updated_at: repo.updated_at,
+      stargazers_count: repo.stargazers_count
     };
   }
 }

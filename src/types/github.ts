@@ -24,4 +24,7 @@ export interface ProjectFromGitHub {
   tags: string[];
   githubUrl: string;
   liveUrl?: string;
+  created_at?: string;
+  updated_at?: string;
+  stargazers_count?: number;
 }
