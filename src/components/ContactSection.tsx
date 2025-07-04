@@ -8,7 +8,7 @@ const ContactSection = () => {
 
   return (
     <section className="py-20 px-6" id="kontakt">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-blue-100 rounded-full">
             <MessageCircle className="w-4 h-4 text-blue-600" />
@@ -24,9 +24,9 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Monday.com Form */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg">
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Monday.com Form - Now takes up 2 columns */}
+          <div className="lg:col-span-2 bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
               <Heart className="w-6 h-6 text-pink-500" />
               {t('contact.form.title')}
@@ -43,14 +43,14 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Inspiration & Ermutigung */}
+          {/* Information Cards - Now in single column */}
           <div className="space-y-6">
             <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-2xl border border-yellow-200">
               <Star className="w-8 h-8 text-yellow-500 mb-4" />
               <h4 className="text-lg font-semibold text-gray-800 mb-2">
                 {t('contact.inspiration.title')}
               </h4>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm">
                 {t('contact.inspiration.text')}
               </p>
             </div>
@@ -60,7 +60,7 @@ const ContactSection = () => {
               <h4 className="text-lg font-semibold text-gray-800 mb-2">
                 {t('contact.collaborate.title')}
               </h4>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm">
                 {t('contact.collaborate.text')}
               </p>
             </div>
@@ -70,24 +70,24 @@ const ContactSection = () => {
               <h4 className="text-lg font-semibold text-gray-800 mb-2">
                 {t('contact.hello.title')}
               </h4>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm">
                 {t('contact.hello.text')}
               </p>
             </div>
 
-            {/* Social Links Platzhalter */}
-            <div className="text-center pt-6">
+            {/* Social Links - Moved to bottom of sidebar */}
+            <div className="text-center pt-4">
               <p className="text-sm text-gray-500 mb-4">
                 {t('contact.follow')}
               </p>
               <div className="flex justify-center gap-4">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors">
                   <span className="text-blue-600 text-sm font-bold">Tw</span>
                 </div>
-                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center hover:bg-pink-200 transition-colors">
                   <span className="text-pink-600 text-sm font-bold">Ig</span>
                 </div>
-                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center hover:bg-purple-200 transition-colors">
                   <span className="text-purple-600 text-sm font-bold">Li</span>
                 </div>
               </div>
