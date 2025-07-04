@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Heart, Star, Book, MessageCircle } from 'lucide-react';
+import { Heart, Star, Book, MessageCircle, Linkedin, Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactSection = () => {
@@ -26,7 +26,7 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Monday.com Form - Now takes up 2 columns */}
-          <div className="lg:col-span-2 bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg">
+          <div className="lg:col-span-2 bg-white/80 backdrop-blur-sm rounded-3xl p-8">
             <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
               <Heart className="w-6 h-6 text-pink-500" />
               {t('contact.form.title')}
@@ -37,7 +37,7 @@ const ContactSection = () => {
                 src="https://forms.monday.com/forms/embed/a8ce15853bfc10ad2292cc6f234b5345?r=euc1" 
                 width="100%" 
                 height="500" 
-                style={{ border: 0, boxShadow: '5px 5px 56px 0px rgba(0,0,0,0.25)', borderRadius: '12px' }}
+                style={{ border: 0, borderRadius: '12px' }}
                 title="Contact Form"
               />
             </div>
@@ -81,15 +81,30 @@ const ContactSection = () => {
                 {t('contact.follow')}
               </p>
               <div className="flex justify-center gap-4">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors">
-                  <span className="text-blue-600 text-sm font-bold">Tw</span>
-                </div>
-                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center hover:bg-pink-200 transition-colors">
-                  <span className="text-pink-600 text-sm font-bold">Ig</span>
-                </div>
-                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center hover:bg-purple-200 transition-colors">
-                  <span className="text-purple-600 text-sm font-bold">Li</span>
-                </div>
+                <a 
+                  href="https://www.linkedin.com/company/till-freitag/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors"
+                >
+                  <Linkedin className="w-5 h-5 text-blue-600" />
+                </a>
+                <a 
+                  href="https://www.facebook.com/till.freitag.consulting" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors"
+                >
+                  <Facebook className="w-5 h-5 text-blue-600" />
+                </a>
+                <a 
+                  href="https://www.instagram.com/till_freitag_consulting/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center hover:bg-pink-200 transition-colors"
+                >
+                  <Instagram className="w-5 h-5 text-pink-600" />
+                </a>
               </div>
             </div>
           </div>
