@@ -56,14 +56,44 @@ class GitHubService {
     }
   }
 
-  private getLocalImagePath(repoName: string): string | null {
-    // Check for common image extensions
+  private getLocalImagePath(repo: GitHubRepo): string | null {
+    const repoName = repo.name;
     const extensions = ['jpg', 'jpeg', 'png', 'webp'];
+    
+    // Priority order for image detection:
+    // 1. Try homepage domain as filename (for fexaas-by-till-freitag.com.jpg)
+    if (repo.homepage) {
+      try {
+        const domain = new URL(repo.homepage).hostname;
+        for (const ext of extensions) {
+          const imagePath = `/images/projects/${domain}.${ext}`;
+          return imagePath;
+        }
+      } catch (e) {
+        // Invalid URL, continue to next method
+      }
+    }
+    
+    // 2. Try repository name
     for (const ext of extensions) {
       const imagePath = `/images/projects/${repoName}.${ext}`;
-      // Return the path - we'll let the browser handle if it exists
       return imagePath;
     }
+    
+    // 3. Try common variations
+    const variations = [
+      repoName.toLowerCase(),
+      repoName.replace(/-/g, '_'),
+      repoName.replace(/_/g, '-')
+    ];
+    
+    for (const variation of variations) {
+      for (const ext of extensions) {
+        const imagePath = `/images/projects/${variation}.${ext}`;
+        return imagePath;
+      }
+    }
+    
     return null;
   }
 
@@ -135,7 +165,7 @@ class GitHubService {
 
   transformRepoToProject(repo: GitHubRepo): ProjectFromGitHub {
     // Try to use local image first, fallback to generated image
-    const localImagePath = this.getLocalImagePath(repo.name);
+    const localImagePath = this.getLocalImagePath(repo);
     const imageId = Math.abs(repo.name.split('').reduce((a, b) => a + b.charCodeAt(0), 0)) % 1000;
     const fallbackImage = `https://picsum.photos/600/400?random=${imageId}`;
     
