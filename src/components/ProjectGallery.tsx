@@ -135,24 +135,10 @@ const ProjectGallery = () => {
             </div>
           </div>
 
-          <div className="text-sm text-gray-600 hidden sm:block">
+          <div className="text-sm text-gray-600">
             <span className="inline-flex items-center gap-1">
               📂 {projects.length} {t('projects.projectsFrom')} <strong>@tillfreitag</strong>
             </span>
-          </div>
-        </div>
-
-        {/* Mobile-only project count - appears before main content */}
-        <div className="sm:hidden mb-4 text-sm text-gray-600 text-center">
-          <div className="mb-2">
-            {lastRefresh && (
-              <span>
-                Zuletzt aktualisiert: {lastRefresh.toLocaleTimeString()}
-              </span>
-            )}
-          </div>
-          <div>
-            📂 {projects.length} Projekte von <strong>@tillfreitag</strong>
           </div>
         </div>
 
