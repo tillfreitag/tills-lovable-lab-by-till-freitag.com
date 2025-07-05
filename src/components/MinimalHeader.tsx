@@ -10,7 +10,7 @@ const MinimalHeader = () => {
   return (
     <header className="py-6 px-6 border-b border-white/20">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
               <Heart className="w-4 h-4 text-white" />
@@ -19,12 +19,12 @@ const MinimalHeader = () => {
               <h1 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
                 {t('header.title')}
               </h1>
-              <p className="text-sm text-gray-600">{t('header.subtitle')}</p>
+              <p className="text-sm text-gray-600 hidden sm:block">{t('header.subtitle')}</p>
             </div>
           </div>
           
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
               <span>{t('header.status')}</span>
             </div>
