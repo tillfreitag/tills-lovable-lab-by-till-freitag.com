@@ -47,7 +47,7 @@ const Imprint = () => {
               </h2>
               <div className="space-y-2">
                 <p><strong>{language === 'de' ? 'Telefon:' : 'Phone:'}</strong> +49 (0) 123 456789</p>
-                <p><strong>E-Mail:</strong> info@tillfreitag-consulting.de</p>
+                <p><strong>E-Mail:</strong> hi@till-freitag.com</p>
               </div>
             </section>
 
@@ -56,23 +56,23 @@ const Imprint = () => {
                 <section>
                   <h2 className="text-xl font-semibold mb-3 text-gray-800">Registereintrag</h2>
                   <div className="space-y-2">
-                    <p><strong>Registergericht:</strong> Amtsgericht Musterstadt</p>
-                    <p><strong>Registernummer:</strong> HRB 12345</p>
+                    <p><strong>Registergericht:</strong> AG Kiel</p>
+                    <p><strong>Registernummer:</strong> HRB 26029</p>
                   </div>
                 </section>
 
                 <section>
                   <h2 className="text-xl font-semibold mb-3 text-gray-800">Umsatzsteuer-ID</h2>
                   <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:</p>
-                  <p><strong>DE123456789</strong></p>
+                  <p><strong>DE363940391</strong></p>
                 </section>
 
                 <section>
                   <h2 className="text-xl font-semibold mb-3 text-gray-800">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
                   <div className="space-y-2">
-                    <p><strong>Till Freitag</strong></p>
-                    <p>Musterstraße 123</p>
-                    <p>12345 Musterstadt</p>
+                    <p><strong>Till Freitag Consulting GmbH</strong></p>
+                    <p>Friedrichstraße 155</p>
+                    <p>10117 Berlin</p>
                   </div>
                 </section>
               </>
@@ -81,23 +81,23 @@ const Imprint = () => {
                 <section>
                   <h2 className="text-xl font-semibold mb-3 text-gray-800">Commercial Register</h2>
                   <div className="space-y-2">
-                    <p><strong>Register Court:</strong> District Court Sample City</p>
-                    <p><strong>Register Number:</strong> HRB 12345</p>
+                    <p><strong>Register Court:</strong> AG Kiel</p>
+                    <p><strong>Register Number:</strong> HRB 26029</p> 
                   </div>
                 </section>
 
                 <section>
                   <h2 className="text-xl font-semibold mb-3 text-gray-800">VAT ID</h2>
                   <p>Value added tax identification number according to § 27 a of the German VAT Act:</p>
-                  <p><strong>DE123456789</strong></p>
+                  <p><strong>DE363940391</strong></p>
                 </section>
 
                 <section>
                   <h2 className="text-xl font-semibold mb-3 text-gray-800">Responsible for Content</h2>
                   <div className="space-y-2">
-                    <p><strong>Till Freitag</strong></p>
-                    <p>Sample Street 123</p>
-                    <p>12345 Sample City</p>
+                    <p><strong>Till Freitag Consulting GmbH</strong></p>
+                    <p>Friedrichstraße 155</p>
+                    <p>10117 Berlin</p>
                   </div>
                 </section>
               </>
