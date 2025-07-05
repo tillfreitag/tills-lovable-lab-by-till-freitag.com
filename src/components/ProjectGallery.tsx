@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { LayoutGrid, Grid3X3, Grid2X2, RefreshCw, Loader2, Calendar, Star } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -184,8 +183,8 @@ const ProjectGallery = () => {
                 ))}
               </div>
 
-              {/* Grid Layout Controls */}
-              <div className="flex items-center gap-2 bg-white/80 rounded-full p-1 shadow-sm">
+              {/* Grid Layout Controls - Hidden on mobile */}
+              <div className="hidden md:flex items-center gap-2 bg-white/80 rounded-full p-1 shadow-sm">
                 <button
                   onClick={() => handleGridChange(2)}
                   className={`p-2 rounded-full transition-all duration-200 ${
