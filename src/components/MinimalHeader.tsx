@@ -8,7 +8,7 @@ const MinimalHeader = () => {
   const { t } = useLanguage();
   
   return (
-    <header className="py-6 px-6 border-b border-white/20">
+    <header className="py-4 px-6 border-b border-white/20">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -19,7 +19,10 @@ const MinimalHeader = () => {
               <h1 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
                 {t('header.title')}
               </h1>
-              <p className="text-sm text-gray-600 hidden sm:block">{t('header.subtitle')}</p>
+              <p className="text-sm text-gray-600">
+                <span className="hidden sm:inline">{t('header.subtitle')}</span>
+                <span className="sm:hidden">Lovable-Projekte mit Gefühl ✨</span>
+              </p>
             </div>
           </div>
           

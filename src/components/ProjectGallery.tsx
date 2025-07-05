@@ -108,10 +108,10 @@ const ProjectGallery = () => {
   };
 
   return (
-    <section className="py-6 px-6">
+    <section className="py-4 px-6 md:py-6">
       <div className="max-w-6xl mx-auto">
         {/* Status & Refresh */}
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="mb-4 md:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
               <button
@@ -165,15 +165,15 @@ const ProjectGallery = () => {
 
         {/* Controls Section */}
         {!isLoading && !error && projects.length > 0 && (
-          <div className="space-y-4 mb-8">
+          <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
             {/* Category Filter */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 md:gap-3">
                 {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => handleCategoryChange(category)}
-                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                    className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full font-medium transition-all duration-300 text-xs md:text-sm ${
                       selectedCategory === category
                         ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
                         : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-md'
@@ -315,7 +315,7 @@ const ProjectGallery = () => {
           </div>
         )}
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-8 md:mt-12">
           <p className="text-gray-600 mb-4">
             {t('projects.footer')} (@tillfreitag) ✨
           </p>
