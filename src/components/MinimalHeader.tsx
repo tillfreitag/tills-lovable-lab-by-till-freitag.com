@@ -12,7 +12,7 @@ const MinimalHeader = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
+            <div className="hidden sm:flex w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full items-center justify-center">
               <Heart className="w-4 h-4 text-white" />
             </div>
             <div>
