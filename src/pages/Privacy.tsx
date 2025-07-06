@@ -117,7 +117,7 @@ const Privacy = () => {
                   <p className="text-sm leading-relaxed">
                     {language === 'de' ? 'Wenn Sie Fragen zum Datenschutz haben, schreiben Sie uns bitte eine E-Mail oder wenden Sie sich direkt an die für den Datenschutz verantwortliche Person in unserer Organisation:' : 'If you have questions about data protection, please write us an email or contact the responsible person for data protection in our organization:'}
                   </p>
-                  <p className="text-sm mt-2"><strong>E-Mail:</strong> datenschutz@tillfreitag-consulting.de</p>
+                  <p className="text-sm mt-2"><strong>E-Mail:</strong> datenschutz@till-freitag.com</p>
                 </div>
               </div>
             </section>
