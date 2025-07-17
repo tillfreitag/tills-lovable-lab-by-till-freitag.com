@@ -5,6 +5,7 @@ import ProjectGallery from '@/components/ProjectGallery';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import LovableBadge from '@/components/LovableBadge';
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <AboutSection />
       <ContactSection />
       <Footer />
+      <LovableBadge />
     </div>
   );
 };
