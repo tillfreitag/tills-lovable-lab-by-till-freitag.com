@@ -26,7 +26,7 @@ const ContactSection = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Monday.com Form Embed */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20">
+          <div>
             <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">{t('contact.form.title')}</h3>
             
             <div className="flex justify-center">
