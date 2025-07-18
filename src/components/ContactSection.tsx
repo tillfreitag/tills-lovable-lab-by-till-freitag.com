@@ -2,15 +2,9 @@
 import React from 'react';
 import { Mail, Send, Users } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from "@/components/ui/button"
 
 const ContactSection = () => {
   const { t } = useLanguage();
-
-  const openMondayForm = () => {
-    // Open Monday.com form in new tab
-    window.open('https://forms.monday.com/forms/your-form-id', '_blank');
-  };
 
   return (
     <section className="py-20 px-6 bg-white/50 backdrop-blur-sm" id="contact">
@@ -31,21 +25,23 @@ const ContactSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Monday.com Form Integration */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">{t('contact.form.title')}</h3>
+          {/* Monday.com Form Embed */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">{t('contact.form.title')}</h3>
             
-            <div className="text-center">
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Klick auf den Button unten, um unser Kontaktformular zu öffnen und dein Projekt mit Till zu besprechen.
-              </p>
-              
-              <Button 
-                onClick={openMondayForm}
-                className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white py-3 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                {t('contact.form.cta')}
-              </Button>
+            <div className="flex justify-center">
+              <iframe 
+                src="https://forms.monday.com/forms/embed/a8ce15853bfc10ad2292cc6f234b5345?r=euc1" 
+                width="100%" 
+                height="500" 
+                style={{ 
+                  border: 0, 
+                  boxShadow: '5px 5px 56px 0px rgba(0,0,0,0.25)',
+                  borderRadius: '8px',
+                  maxWidth: '650px'
+                }}
+                title="Monday.com Kontaktformular"
+              />
             </div>
           </div>
 
