@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
-import { LayoutGrid, Grid3X3, Grid2X2, RefreshCw, Loader2, Calendar, Star } from 'lucide-react';
+import { LayoutGrid, Grid3X3, Grid2X2, RefreshCw, Loader2, Calendar, Star, Clock } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ProjectCard from './ProjectCard';
 import { githubService } from '@/services/githubService';
@@ -14,6 +15,7 @@ const ProjectGallery = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lastRefresh, setLastRefresh] = useState<Date | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [refreshCooldown, setRefreshCooldown] = useState(0);
   
   // Initialize selectedCategory with translated "All"
   useEffect(() => {
@@ -31,6 +33,16 @@ const ProjectGallery = () => {
     loadGitHubProjects();
   }, []);
 
+  // Cooldown timer
+  useEffect(() => {
+    if (refreshCooldown > 0) {
+      const timer = setTimeout(() => {
+        setRefreshCooldown(refreshCooldown - 1);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [refreshCooldown]);
+
   const loadGitHubProjects = async () => {
     setIsLoading(true);
     setError(null);
@@ -47,6 +59,7 @@ const ProjectGallery = () => {
       
       setProjects(projectData);
       setLastRefresh(new Date());
+      setRefreshCooldown(30); // 30 second cooldown
     } catch (error) {
       console.error('Failed to load GitHub projects:', error);
       setError('Failed to load projects from GitHub');
@@ -56,6 +69,7 @@ const ProjectGallery = () => {
   };
 
   const handleRefresh = () => {
+    if (refreshCooldown > 0) return;
     loadGitHubProjects();
   };
 
@@ -115,12 +129,17 @@ const ProjectGallery = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleRefresh}
-                disabled={isLoading}
+                disabled={isLoading || refreshCooldown > 0}
                 className="inline-flex items-center gap-2 px-3 py-2 bg-white/80 rounded-full shadow-sm hover:bg-white hover:shadow-md transition-all text-sm text-gray-700 disabled:opacity-50"
-                title={t('projects.refresh')}
+                title={refreshCooldown > 0 ? `Wait ${refreshCooldown}s` : t('projects.refresh')}
               >
                 {isLoading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
+                ) : refreshCooldown > 0 ? (
+                  <>
+                    <Clock className="w-4 h-4" />
+                    <span className="text-xs">{refreshCooldown}s</span>
+                  </>
                 ) : (
                   <RefreshCw className="w-4 h-4" />
                 )}
