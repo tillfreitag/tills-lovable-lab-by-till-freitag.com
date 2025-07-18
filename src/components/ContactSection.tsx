@@ -1,43 +1,15 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import { Mail, Send, Users } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
 
 const ContactSection = () => {
   const { t } = useLanguage();
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // Show success message
-      toast({
-        title: "Success!",
-        description: t('contact.form.success'),
-      })
-
-      // Reset form fields
-      setEmail('');
-      setMessage('');
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your request.",
-      })
-    } finally {
-      setIsSubmitting(false);
-    }
+  const openMondayForm = () => {
+    // Open Monday.com form in new tab
+    window.open('https://forms.monday.com/forms/your-form-id', '_blank');
   };
 
   return (
@@ -59,49 +31,23 @@ const ContactSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20">
+          {/* Monday.com Form Integration */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20">
             <h3 className="text-2xl font-bold text-gray-800 mb-6">{t('contact.form.title')}</h3>
             
-            <div className="space-y-4">
-              <div>
-                <Input 
-                  type="email" 
-                  placeholder={t('contact.form.emailPlaceholder')} 
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mt-2">{t('contact.form.email')}</label>
-              </div>
+            <div className="text-center">
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Klick auf den Button unten, um unser Kontaktformular zu öffnen und dein Projekt mit Till zu besprechen.
+              </p>
               
-              <div>
-                <Textarea
-                  placeholder={t('contact.form.messagePlaceholder')}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  rows={4}
-                  required
-                />
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mt-2">{t('contact.form.message')}</label>
-              </div>
+              <Button 
+                onClick={openMondayForm}
+                className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white py-3 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                {t('contact.form.cta')}
+              </Button>
             </div>
-            
-            <Button 
-              type="submit" 
-              disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white py-3 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              {isSubmitting ? (
-                <div className="flex items-center justify-center gap-2">
-                  <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
-                  Sending...
-                </div>
-              ) : (
-                t('contact.form.submit')
-              )}
-            </Button>
-          </form>
+          </div>
 
           {/* Inspiration & Collaboration */}
           <div className="space-y-8">
