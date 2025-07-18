@@ -42,7 +42,7 @@ const Index = () => {
     description: project.description,
     url: project.githubUrl,
     image: project.image,
-    dateCreated: project.date,
+    dateCreated: project.created_at || '',
     technologies: project.tools
   }));
 
