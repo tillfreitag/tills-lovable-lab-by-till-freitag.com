@@ -2,8 +2,41 @@
 {
   "header": {
     "title": "Till's Lovable Lab",
-    "subtitle": "Lovable-Projekte mit Gefühl ✨",
-    "status": "Aktiv experimentierend"
+    "subtitle": "Lovable Development Agency mit Gefühl ✨",
+    "status": "Bereit für Ihr nächstes Projekt"
+  },
+  "hero": {
+    "badge": "Lovable Development Agency",
+    "title": "Digitale Träume, Lovable Realität",
+    "subtitle": "Lernen Sie Till Freitag kennen - das Genie hinter unserer Agentur, das Ihre Ideen in wunderschöne, funktionale Webanwendungen mit Lovables revolutionärer Platform verwandelt.",
+    "cta": "Projekt mit Till starten",
+    "features": {
+      "experimental": "Innovativ",
+      "inspiring": "Ergebnisorientiert",
+      "handcrafted": "Premium Qualität"
+    }
+  },
+  "services": {
+    "badge": "Was wir erschaffen",
+    "title": "Services, die Magie erschaffen",
+    "subtitle": "Von der Idee bis zum Launch kümmern wir uns um jeden Aspekt Ihres digitalen Projekts mit Lovables modernster Technologie.",
+    "webApps": {
+      "title": "Web Applications",
+      "description": "Vollwertige Webanwendungen mit React, TypeScript und modernen Best Practices. Von Dashboards bis E-Commerce-Plattformen."
+    },
+    "prototypes": {
+      "title": "Schnelle Prototypen",
+      "description": "Validieren Sie Ihre Ideen schnell mit funktionalen Prototypen. Perfekt zum Testen von Konzepten vor der vollständigen Entwicklung."
+    },
+    "mvps": {
+      "title": "MVP Entwicklung", 
+      "description": "Starten Sie Ihre Startup-Idee mit einem skalierbaren Minimum Viable Product. Schneller zum Markt mit bewährter Architektur."
+    },
+    "training": {
+      "title": "Training & Enablement",
+      "description": "Lernen Sie Lovable-Entwicklung von Till persönlich. Team-Schulungen, Workshops und Beratung für Ihr Unternehmen."
+    },
+    "cta": "Projekt besprechen"
   },
   "projects": {
     "categories": {
@@ -24,67 +57,70 @@
     "refresh": "Projekte aktualisieren",
     "lastUpdate": "Zuletzt aktualisiert:",
     "projectsFrom": "Projekte von",
-    "footer": "Projekte direkt aus meinem GitHub",
-    "liveSync": "Live-Sync mit GitHub"
+    "footer": "Echte Projekte aus unserem Agentur-Portfolio",
+    "liveSync": "Live-Sync mit GitHub",
+    "badge": "Unsere Arbeit", 
+    "title": "Projekte, die unsere Expertise beweisen",
+    "subtitle": "Jedes Projekt zeigt unser Engagement für Qualität und Innovation mit Lovables Platform."
   },
   "about": {
-    "badge": "Hinter den Kulissen",
-    "title": "Die Geschichte dahinter",
+    "badge": "Das Genie kennenlernen",
+    "title": "Die Geschichte hinter Till Freitag Agency",
     "why": {
-      "title": "Warum dieses Portfolio existiert",
-      "text": "Jedes Lovable-Projekt ist ein kleines Experiment, ein Stück Herzblut, das in Code verwandelt wurde. Dieses Portfolio ist mein Weg, diese digitalen Träume zu sammeln und zu teilen – nicht perfekt, aber authentisch und voller Liebe zum Detail."
+      "title": "Warum wir Lovable gewählt haben",
+      "text": "Lovable revolutioniert, wie wir Webanwendungen entwickeln. Es geht nicht nur um Geschwindigkeit - es geht darum, schöne, wartbare Anwendungen zu schaffen, die unsere Kunden lieben. Till entdeckte diese Platform und wusste, dass es die Zukunft der Entwicklung ist."
     },
     "for": {
-      "title": "Für wen es gedacht ist",
-      "text": "Für alle, die an der Magie der digitalen Gestaltung interessiert sind. Für Inspiration Suchende, für Lovable-Enthusiasten und für alle, die glauben, dass Technologie schön und menschlich sein kann."
+      "title": "Wen wir bedienen",
+      "text": "Startups, die schnell starten möchten, etablierte Unternehmen, die moderne Web-Lösungen benötigen, und Teams, die modernste Entwicklungspraktiken lernen möchten. Wenn Sie eine digitale Vision haben, machen wir sie zur Realität."
     },
     "unique": {
-      "title": "Was es einzigartig macht",
-      "text": "Es ist nicht nur eine Projektsammlung – es ist ein lebendiges Tagebuch meiner kreativen Reise. Jedes Projekt zeigt nicht nur das Endergebnis, sondern auch die Gedanken, Emotionen und kleinen Entdeckungen dahinter."
+      "title": "Was uns einzigartig macht",
+      "text": "Wir sind nicht nur Entwickler - wir sind Lovable-Spezialisten. Till kombiniert jahrelange Erfahrung mit Lovables innovativer Platform, um Projekte schneller und besser als traditionelle Entwicklungsagenturen zu liefern."
     },
-    "madeWith": "Made with Love",
-    "subtitle": "Jedes Pixel, jede Animation, jede Interaktion wurde mit Liebe zum Detail gestaltet.",
+    "madeWith": "Powered by Lovable",
+    "subtitle": "Jedes Projekt profitiert von Lovables revolutionärem Ansatz zur Web-Entwicklung.",
     "stats": {
-      "coffee": "Kaffee getrunken",
-      "coffeeCount": "∞ Tassen",
-      "lines": "Code-Zeilen",
-      "linesCount": "10k+",
-      "hours": "Stunden Liebe",
-      "hoursCount": "500+"
+      "coffee": "Projekte geliefert",
+      "coffeeCount": "50+",
+      "lines": "Zufriedene Kunden",
+      "linesCount": "25+",
+      "hours": "Jahre Expertise",
+      "hoursCount": "5+"
     }
   },
   "contact": {
-    "badge": "Lass uns sprechen",
-    "title": "Schreib mir! ✨",
-    "subtitle": "Feedback, Ideen, Fragen oder einfach nur ein \"Hallo\" – ich freue mich über jede Nachricht und jeden Austausch!",
+    "badge": "Bereit zu starten?",
+    "title": "Lassen Sie uns etwas Fantastisches bauen! ✨",
+    "subtitle": "Teilen Sie Ihre Vision und lassen Sie Till sie in eine wunderschöne, funktionale Webanwendung mit Lovables modernster Platform verwandeln.",
     "form": {
-      "title": "Digitales Gästebuch",
-      "email": "Deine E-Mail",
-      "emailPlaceholder": "deine@email.de",
-      "message": "Deine Nachricht",
-      "messagePlaceholder": "Erzähl mir von deinen Ideen, Feedback oder einfach was dir durch den Kopf geht...",
-      "submit": "Nachricht mit Liebe senden 💜",
-      "success": "Danke für deine Nachricht! 💜"
+      "title": "Projektanfrage",
+      "email": "Ihre E-Mail",
+      "emailPlaceholder": "ihre@email.de",
+      "message": "Erzählen Sie uns von Ihrem Projekt",
+      "messagePlaceholder": "Beschreiben Sie Ihre Projektidee, Zeitplan und spezielle Anforderungen...",
+      "submit": "Projekt mit Till starten 💜",
+      "success": "Danke für Ihre Nachricht! Till wird sich bald melden. 💜"
     },
     "inspiration": {
-      "title": "Inspiration gefällig?",
-      "text": "Teile deine eigenen Lovable-Experimente! Ich liebe es, zu sehen, was andere kreative Köpfe erschaffen."
+      "title": "Inspiration nötig?",
+      "text": "Schauen Sie sich unser Portfolio oben an, um zu sehen, was mit Lovable möglich ist. Von einfachen Prototypen bis komplexen Anwendungen."
     },
     "collaborate": {
-      "title": "Zusammenarbeiten?",
-      "text": "Hast du eine Idee für ein gemeinsames Projekt? Lass uns digitale Träume zusammen wahr werden lassen!"
+      "title": "Bereit zur Zusammenarbeit?",
+      "text": "Ob neues Startup, Unternehmensprojekt oder Team-Training - Till und die Agentur sind hier, um Ihnen zum Erfolg zu verhelfen."
     },
     "hello": {
-      "title": "Einfach Hallo sagen",
-      "text": "Manchmal sind die schönsten Gespräche die, die ohne besonderen Grund entstehen. Schreib einfach \"Hi!\" ✨"
+      "title": "Nur am Erkunden?",
+      "text": "Kein Druck! Melden Sie sich gerne mit Fragen zur Lovable-Entwicklung oder um Ihre Ideen zu besprechen. ✨"
     },
-    "follow": "Oder folge mir hier:"
+    "follow": "Mit Till verbinden:"
   },
   "footer": {
-    "title": "Till's Lovable Portfolio wächst kontinuierlich.",
-    "subtitle": "Made with Lovable & Lots of Love.",
-    "copyright": "© 2025 • Ein Herzensprojekt • der Till Freitag Consulting GmbH • Version 1.0 – und das ist erst der Anfang! ✨",
-    "quote": "\"Die schönsten Dinge entstehen, wenn Technologie auf Menschlichkeit trifft.\" 💜",
+    "title": "Till Freitag Agency - Wo Innovation auf Handwerkskunst trifft.",
+    "subtitle": "Powered by Lovable & Lots of Expertise.",
+    "copyright": "© 2025 • Till Freitag Consulting GmbH • Lovable Development Agency • Version 1.0 – und das ist erst der Anfang! ✨",
+    "quote": "\"Die schönsten Anwendungen entstehen, wenn Innovation auf Expertise trifft.\" 💜",
     "imprint": "Impressum",
     "privacy": "Datenschutz"
   },

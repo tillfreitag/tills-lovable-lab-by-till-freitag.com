@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { LayoutGrid, Grid3X3, Grid2X2, RefreshCw, Loader2, Calendar, Star, Clock } from 'lucide-react';
+import { LayoutGrid, Grid3X3, Grid2X2, RefreshCw, Loader2, Calendar, Star, Clock, Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ProjectCard from './ProjectCard';
 import { githubService } from '@/services/githubService';
@@ -121,8 +120,23 @@ const ProjectGallery = () => {
   };
 
   return (
-    <section className="py-4 px-6 md:py-6">
+    <section className="py-20 px-6" id="portfolio">
       <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full">
+            <Code className="w-4 h-4 text-green-600" />
+            <span className="text-sm font-medium text-green-800">{t('projects.badge')}</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+            {t('projects.title')}
+          </h2>
+          
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+            {t('projects.subtitle')}
+          </p>
+        </div>
+
         {/* Status & Refresh */}
         <div className="mb-4 md:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-4">

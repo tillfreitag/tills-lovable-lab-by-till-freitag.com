@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import MinimalHeader from '@/components/MinimalHeader';
+import HeroSection from '@/components/HeroSection';
+import ServicesSection from '@/components/ServicesSection';
 import ProjectGallery from '@/components/ProjectGallery';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
@@ -52,6 +54,8 @@ const Index = () => {
       <StructuredData projects={structuredProjects} />
       <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
         <MinimalHeader />
+        <HeroSection />
+        <ServicesSection />
         <ProjectGallery />
         <AboutSection />
         <ContactSection />

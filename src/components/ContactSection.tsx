@@ -1,109 +1,151 @@
-
-import React from 'react';
-import { Heart, Star, Book, MessageCircle, Linkedin, Facebook, Instagram } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Send, Users } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { toast } from "@/components/ui/use-toast"
 
 const ContactSection = () => {
   const { t } = useLanguage();
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Show success message
+      toast({
+        title: "Success!",
+        description: t('contact.form.success'),
+      })
+
+      // Reset form fields
+      setEmail('');
+      setMessage('');
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      })
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <section className="py-20 px-6" id="kontakt">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-6 bg-white/50 backdrop-blur-sm" id="contact">
+      <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-blue-100 rounded-full">
-            <MessageCircle className="w-4 h-4 text-blue-600" />
-            <span className="text-sm font-medium text-blue-800">{t('contact.badge')}</span>
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-pink-100 to-purple-100 rounded-full">
+            <Mail className="w-4 h-4 text-pink-600" />
+            <span className="text-sm font-medium text-pink-800">{t('contact.badge')}</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
             {t('contact.title')}
           </h2>
           
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             {t('contact.subtitle')}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Monday.com Form - Now takes up 2 columns */}
-          <div className="lg:col-span-2 bg-white/80 backdrop-blur-sm rounded-3xl p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-              <Heart className="w-6 h-6 text-pink-500" />
-              {t('contact.form.title')}
-            </h3>
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          {/* Contact Form */}
+          <form onSubmit={handleSubmit} className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">{t('contact.form.title')}</h3>
             
-            <div className="w-full">
-              <iframe 
-                src="https://forms.monday.com/forms/embed/a8ce15853bfc10ad2292cc6f234b5345?r=euc1" 
-                width="100%" 
-                height="500" 
-                style={{ border: 0, borderRadius: '12px' }}
-                title="Contact Form"
-              />
+            <div className="space-y-4">
+              <div>
+                <Input 
+                  type="email" 
+                  placeholder={t('contact.form.emailPlaceholder')} 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mt-2">{t('contact.form.email')}</label>
+              </div>
+              
+              <div>
+                <Textarea
+                  placeholder={t('contact.form.messagePlaceholder')}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  rows={4}
+                  required
+                />
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mt-2">{t('contact.form.message')}</label>
+              </div>
             </div>
-          </div>
+            
+            <Button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white py-3 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              {isSubmitting ? (
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                  Sending...
+                </div>
+              ) : (
+                t('contact.form.submit')
+              )}
+            </Button>
+          </form>
 
-          {/* Information Cards - Now in single column */}
-          <div className="space-y-6">
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-2xl border border-yellow-200">
-              <Star className="w-8 h-8 text-yellow-500 mb-4" />
-              <h4 className="text-lg font-semibold text-gray-800 mb-2">
+          {/* Inspiration & Collaboration */}
+          <div className="space-y-8">
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                <Send className="w-5 h-5 text-pink-500" />
                 {t('contact.inspiration.title')}
-              </h4>
-              <p className="text-gray-600 text-sm">
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
                 {t('contact.inspiration.text')}
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-200">
-              <Book className="w-8 h-8 text-green-500 mb-4" />
-              <h4 className="text-lg font-semibold text-gray-800 mb-2">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                <Users className="w-5 h-5 text-blue-500" />
                 {t('contact.collaborate.title')}
-              </h4>
-              <p className="text-gray-600 text-sm">
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
                 {t('contact.collaborate.text')}
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl border border-purple-200">
-              <Heart className="w-8 h-8 text-purple-500 mb-4" />
-              <h4 className="text-lg font-semibold text-gray-800 mb-2">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                <Mail className="w-5 h-5 text-green-500" />
                 {t('contact.hello.title')}
-              </h4>
-              <p className="text-gray-600 text-sm">
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
                 {t('contact.hello.text')}
               </p>
             </div>
 
-            {/* Social Links - Moved to bottom of sidebar */}
-            <div className="text-center pt-4">
-              <p className="text-sm text-gray-500 mb-4">
-                {t('contact.follow')}
-              </p>
-              <div className="flex justify-center gap-4">
-                <a 
-                  href="https://www.linkedin.com/company/till-freitag/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors"
-                >
-                  <Linkedin className="w-5 h-5 text-blue-600" />
+            <div className="mt-6">
+              <p className="text-sm text-gray-500">{t('contact.follow')}</p>
+              <div className="flex gap-4 mt-2">
+                <a href="https://twitter.com/yourtwitter" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500 transition-colors">
+                  Twitter
                 </a>
-                <a 
-                  href="https://www.facebook.com/till.freitag.consulting" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors"
-                >
-                  <Facebook className="w-5 h-5 text-blue-600" />
+                <a href="https://linkedin.com/in/yourlinkedin" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500 transition-colors">
+                  LinkedIn
                 </a>
-                <a 
-                  href="https://www.instagram.com/till_freitag_consulting/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center hover:bg-pink-200 transition-colors"
-                >
-                  <Instagram className="w-5 h-5 text-pink-600" />
+                <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500 transition-colors">
+                  GitHub
                 </a>
               </div>
             </div>

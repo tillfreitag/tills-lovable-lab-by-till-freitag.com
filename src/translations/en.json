@@ -2,8 +2,41 @@
 {
   "header": {
     "title": "Till's Lovable Lab",
-    "subtitle": "Lovable projects with soul ✨",
-    "status": "Actively experimenting"
+    "subtitle": "Lovable Development Agency with soul ✨",
+    "status": "Ready for your next project"
+  },
+  "hero": {
+    "badge": "Lovable Development Agency",
+    "title": "Digital Dreams, Lovable Reality",
+    "subtitle": "Meet Till Freitag - the genius behind our agency who transforms your ideas into beautiful, functional web applications using Lovable's revolutionary platform.",
+    "cta": "Start Your Project with Till",
+    "features": {
+      "experimental": "Innovative",
+      "inspiring": "Results-Driven", 
+      "handcrafted": "Premium Quality"
+    }
+  },
+  "services": {
+    "badge": "What we create",
+    "title": "Services that make magic happen",
+    "subtitle": "From concept to launch, we handle every aspect of your digital project with Lovable's cutting-edge technology.",
+    "webApps": {
+      "title": "Web Applications",
+      "description": "Full-featured web applications built with React, TypeScript, and modern best practices. From dashboards to e-commerce platforms."
+    },
+    "prototypes": {
+      "title": "Rapid Prototypes", 
+      "description": "Validate your ideas quickly with functional prototypes. Perfect for testing concepts before full development."
+    },
+    "mvps": {
+      "title": "MVP Development",
+      "description": "Launch your startup idea with a minimum viable product that scales. Get to market faster with proven architecture."
+    },
+    "training": {
+      "title": "Training & Enablement",
+      "description": "Learn Lovable development from Till himself. Team training, workshops, and consulting to level up your organization."
+    },
+    "cta": "Discuss Your Project"
   },
   "projects": {
     "categories": {
@@ -24,67 +57,70 @@
     "refresh": "Refresh projects",
     "lastUpdate": "Last updated:",
     "projectsFrom": "projects from",
-    "footer": "Projects directly from my GitHub",
-    "liveSync": "Live sync with GitHub"
+    "footer": "Real projects from our agency portfolio",
+    "liveSync": "Live sync with GitHub",
+    "badge": "Our work",
+    "title": "Projects that prove our expertise",
+    "subtitle": "Every project showcases our commitment to quality and innovation using Lovable's platform."
   },
   "about": {
-    "badge": "Behind the scenes",
-    "title": "The story behind",
+    "badge": "Meet the genius",
+    "title": "The story behind Till Freitag Agency",
     "why": {
-      "title": "Why this portfolio exists",
-      "text": "Every Lovable project is a small experiment, a piece of passion transformed into code. This portfolio is my way of collecting and sharing these digital dreams – not perfect, but authentic and full of attention to detail."
+      "title": "Why we chose Lovable",
+      "text": "Lovable revolutionizes how we build web applications. It's not just about speed - it's about creating beautiful, maintainable applications that our clients love. Till discovered this platform and knew it was the future of development."
     },
     "for": {
-      "title": "Who it's meant for",
-      "text": "For everyone interested in the magic of digital design. For inspiration seekers, for Lovable enthusiasts, and for all who believe that technology can be beautiful and human."
+      "title": "Who we serve",
+      "text": "Startups looking to launch fast, established companies needing modern web solutions, and teams wanting to learn cutting-edge development practices. If you have a digital vision, we make it reality."
     },
     "unique": {
-      "title": "What makes it unique",
-      "text": "It's not just a project collection – it's a living diary of my creative journey. Each project shows not only the final result, but also the thoughts, emotions, and small discoveries behind it."
+      "title": "What makes us different",
+      "text": "We're not just developers - we're Lovable specialists. Till combines years of experience with Lovable's innovative platform to deliver projects faster and better than traditional development agencies."
     },
-    "madeWith": "Made with Love",
-    "subtitle": "Every pixel, every animation, every interaction was crafted with love for detail.",
+    "madeWith": "Powered by Lovable",
+    "subtitle": "Every project benefits from Lovable's revolutionary approach to web development.",
     "stats": {
-      "coffee": "Coffee consumed",
-      "coffeeCount": "∞ cups",
-      "lines": "Lines of code",
-      "linesCount": "10k+",
-      "hours": "Hours of love",
-      "hoursCount": "500+"
+      "coffee": "Projects delivered",
+      "coffeeCount": "50+",
+      "lines": "Happy clients",
+      "linesCount": "25+",
+      "hours": "Years of expertise", 
+      "hoursCount": "5+"
     }
   },
   "contact": {
-    "badge": "Let's talk",
-    "title": "Write to me! ✨",
-    "subtitle": "Feedback, ideas, questions, or just a simple \"hello\" – I'm happy about every message and exchange!",
+    "badge": "Ready to start?",
+    "title": "Let's build something amazing! ✨",
+    "subtitle": "Share your vision and let Till turn it into a beautiful, functional web application using Lovable's cutting-edge platform.",
     "form": {
-      "title": "Digital Guestbook",
+      "title": "Project Inquiry",
       "email": "Your Email",
       "emailPlaceholder": "your@email.com",
-      "message": "Your Message",
-      "messagePlaceholder": "Tell me about your ideas, feedback, or just what's on your mind...",
-      "submit": "Send message with love 💜",
-      "success": "Thanks for your message! 💜"
+      "message": "Tell us about your project",
+      "messagePlaceholder": "Describe your project idea, timeline, and any specific requirements...",
+      "submit": "Start Your Project with Till 💜",
+      "success": "Thanks for reaching out! Till will be in touch soon. 💜"
     },
     "inspiration": {
-      "title": "Looking for inspiration?",
-      "text": "Share your own Lovable experiments! I love seeing what other creative minds create."
+      "title": "Need inspiration?",
+      "text": "Check out our portfolio above to see what's possible with Lovable. From simple prototypes to complex applications."
     },
     "collaborate": {
-      "title": "Want to collaborate?",
-      "text": "Do you have an idea for a joint project? Let's make digital dreams come true together!"
+      "title": "Ready to collaborate?",
+      "text": "Whether it's a new startup, enterprise project, or team training - Till and the agency are here to help you succeed."
     },
     "hello": {
-      "title": "Just say hello",
-      "text": "Sometimes the most beautiful conversations are those that start without a particular reason. Just write \"Hi!\" ✨"
+      "title": "Just exploring?",
+      "text": "No pressure! Feel free to reach out with questions about Lovable development or to discuss your ideas. ✨"
     },
-    "follow": "Or follow me here:"
+    "follow": "Connect with Till:"
   },
   "footer": {
-    "title": "Till's Lovable Portfolio grows continuously.",
-    "subtitle": "Made with Lovable & Lots of Love.",
-    "copyright": "© 2025 • A passion project • by Till Freitag Consulting GmbH • Version 1.0 – and this is just the beginning! ✨",
-    "quote": "\"The most beautiful things emerge when technology meets humanity.\" 💜",
+    "title": "Till Freitag Agency - Where innovation meets craftsmanship.",
+    "subtitle": "Powered by Lovable & Lots of Expertise.",
+    "copyright": "© 2025 • Till Freitag Consulting GmbH • Lovable Development Agency • Version 1.0 – and this is just the beginning! ✨",
+    "quote": "\"The most beautiful applications emerge when innovation meets expertise.\" 💜",
     "imprint": "Legal Notice",
     "privacy": "Privacy Policy"
   },
