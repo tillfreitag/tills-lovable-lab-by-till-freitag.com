@@ -45,6 +45,28 @@ const Footer = () => {
             </Link>
           </div>
         </div>
+
+        <div className="mt-6 pt-4 border-t border-white/20">
+          <p className="text-sm text-purple-200 mb-3">{t('contact.follow')}</p>
+          <div className="flex justify-center gap-6">
+            <a 
+              href="https://www.linkedin.com/company/till-freitag/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-purple-200 hover:text-white transition-colors duration-200 underline"
+            >
+              LinkedIn
+            </a>
+            <a 
+              href="https://www.instagram.com/till_freitag_consulting/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-purple-200 hover:text-white transition-colors duration-200 underline"
+            >
+              Instagram
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

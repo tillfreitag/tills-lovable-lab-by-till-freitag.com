@@ -35,8 +35,7 @@ const ContactSection = () => {
                 width="100%" 
                 height="500" 
                 style={{ 
-                  border: 0, 
-                  boxShadow: '5px 5px 56px 0px rgba(0,0,0,0.25)',
+                  border: 0,
                   borderRadius: '8px',
                   maxWidth: '650px'
                 }}
@@ -75,21 +74,6 @@ const ContactSection = () => {
               <p className="text-gray-600 leading-relaxed">
                 {t('contact.hello.text')}
               </p>
-            </div>
-
-            <div className="mt-6">
-              <p className="text-sm text-gray-500">{t('contact.follow')}</p>
-              <div className="flex gap-4 mt-2">
-                <a href="https://twitter.com/yourtwitter" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500 transition-colors">
-                  Twitter
-                </a>
-                <a href="https://linkedin.com/in/yourlinkedin" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500 transition-colors">
-                  LinkedIn
-                </a>
-                <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500 transition-colors">
-                  GitHub
-                </a>
-              </div>
             </div>
           </div>
         </div>
