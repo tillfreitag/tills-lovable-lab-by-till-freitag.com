@@ -53,7 +53,7 @@ const HeroSection = () => {
             </Button>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4 mb-16">
             <div className="flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full shadow-sm border border-gray-100">
               <Star className="w-4 h-4 text-yellow-500" />
               <span className="text-sm font-medium text-gray-700">{t('hero.features.experimental')}</span>
@@ -70,10 +70,10 @@ const HeroSection = () => {
         </div>
         
         {/* Scroll down indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
           <button
             onClick={scrollToNext}
-            className="group flex flex-col items-center gap-2 text-gray-400 hover:text-pink-600 transition-colors duration-300"
+            className="group flex flex-col items-center gap-2 text-pink-400 hover:text-pink-600 transition-colors duration-300"
           >
             <span className="text-xs font-medium opacity-70 group-hover:opacity-100">Mehr erfahren</span>
             <div className="w-6 h-6 rounded-full border border-current flex items-center justify-center animate-bounce">
