@@ -70,14 +70,14 @@ const HeroSection = () => {
         </div>
         
         {/* Scroll down indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
           <button
             onClick={scrollToNext}
-            className="group flex flex-col items-center gap-2 text-gray-400 hover:text-pink-600 transition-colors duration-300"
+            className="group flex flex-col items-center gap-2 px-4 py-3 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-pink-200 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50 transition-all duration-300"
           >
-            <span className="text-xs font-medium opacity-70 group-hover:opacity-100">Mehr erfahren</span>
-            <div className="w-6 h-6 rounded-full border border-current flex items-center justify-center animate-bounce">
-              <ChevronDown className="w-4 h-4" />
+            <span className="text-xs font-medium text-pink-800 group-hover:text-pink-900">Mehr erfahren</span>
+            <div className="w-5 h-5 text-pink-600 group-hover:text-pink-700 animate-bounce">
+              <ChevronDown className="w-5 h-5" />
             </div>
           </button>
         </div>
