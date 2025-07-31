@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Star, Zap, Award, ArrowRight } from 'lucide-react';
+import { Star, Zap, Award, ArrowRight, ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 
@@ -10,6 +10,11 @@ const HeroSection = () => {
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToNext = () => {
+    const servicesSection = document.querySelector('section:nth-of-type(2)');
+    servicesSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -62,6 +67,19 @@ const HeroSection = () => {
               <span className="text-sm font-medium text-gray-700">{t('hero.features.handcrafted')}</span>
             </div>
           </div>
+        </div>
+        
+        {/* Scroll down indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+          <button
+            onClick={scrollToNext}
+            className="group flex flex-col items-center gap-2 text-gray-400 hover:text-pink-600 transition-colors duration-300"
+          >
+            <span className="text-xs font-medium opacity-70 group-hover:opacity-100">Mehr erfahren</span>
+            <div className="w-6 h-6 rounded-full border border-current flex items-center justify-center animate-bounce">
+              <ChevronDown className="w-4 h-4" />
+            </div>
+          </button>
         </div>
       </div>
     </section>
