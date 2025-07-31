@@ -38,6 +38,10 @@
     },
     "cta": "Discuss Your Project"
   },
+  "testimonials": {
+    "title": "Customer Success Stories",
+    "subtitle": "See how we've helped businesses transform their ideas into successful digital products"
+  },
   "projects": {
     "categories": {
       "all": "All",

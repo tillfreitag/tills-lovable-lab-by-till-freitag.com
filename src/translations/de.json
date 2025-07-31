@@ -38,6 +38,10 @@
     },
     "cta": "Projekt besprechen"
   },
+  "testimonials": {
+    "title": "Kundenerfolge",
+    "subtitle": "Sehen Sie, wie wir Unternehmen dabei geholfen haben, ihre Ideen in erfolgreiche digitale Produkte zu verwandeln"
+  },
   "projects": {
     "categories": {
       "all": "Alle",
