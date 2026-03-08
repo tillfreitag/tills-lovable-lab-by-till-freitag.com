@@ -75,7 +75,7 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        <div className="text-center">
+        <div className="text-center flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button 
             onClick={scrollToContact}
             size="lg"
@@ -85,6 +85,20 @@ const ServicesSection = () => {
             {t('services.cta')}
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
+          <a
+            href="https://till-freitag.com/services"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-2 border-pink-200 hover:border-pink-300 hover:bg-pink-50 text-pink-700 px-8 py-3"
+            >
+              {t('services.moreServices')}
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </a>
         </div>
       </div>
     </section>
