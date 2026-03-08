@@ -8,7 +8,7 @@ const ContactSection = () => {
 
   return (
     <section className="py-20 px-6 bg-white/50 backdrop-blur-sm" id="contact">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-pink-100 to-purple-100 rounded-full">
             <Mail className="w-4 h-4 text-pink-600" />
