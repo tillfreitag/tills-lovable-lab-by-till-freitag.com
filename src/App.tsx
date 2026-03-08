@@ -20,10 +20,6 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/index.html" element={<Navigate to="/" replace />} />
-            <Route path="/impressum" element={<Imprint />} />
-            <Route path="/imprint" element={<Imprint />} />
-            <Route path="/datenschutz" element={<Privacy />} />
-            <Route path="/privacy" element={<Privacy />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
