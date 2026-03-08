@@ -51,7 +51,7 @@ const ProjectGallery = () => {
       category: 'Web Application',
       tools: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
       lovableAspects: ['Modernes Design', 'Responsive Layout', 'SEO-optimiert', 'Schnelle Performance'],
-      image: 'https://till-freitag.com/og-image.png',
+      image: '/images/projects/till-freitag-com.png',
       tags: ['agency', 'consulting', 'website'],
       githubUrl: '',
       liveUrl: 'https://till-freitag.com',
