@@ -69,23 +69,6 @@ const Footer = () => {
           <h3 className="text-2xl font-bold mb-2">{t('footer.title')}</h3>
           <p className="text-purple-100">{t('footer.subtitle')}</p>
         </div>
-        
-        {/* Navigation links */}
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
-          <Link 
-            to={language === 'de' ? '/impressum' : '/imprint'}
-            className="text-purple-200 hover:text-white transition-colors duration-200 underline text-sm"
-          >
-            {t('footer.imprint')}
-          </Link>
-          <span className="hidden sm:inline text-purple-300">•</span>
-          <Link 
-            to={language === 'de' ? '/datenschutz' : '/privacy'}
-            className="text-purple-200 hover:text-white transition-colors duration-200 underline text-sm"
-          >
-            {t('footer.privacy')}
-          </Link>
-        </div>
 
         {/* Social links */}
         <div className="text-center mb-8">
@@ -123,9 +106,44 @@ const Footer = () => {
           <p className="text-purple-200 text-sm mb-3">
             {t('footer.copyright')}
           </p>
-          <p className="text-xs text-purple-300">
+          <p className="text-xs text-purple-300 mb-4">
             {t('footer.quote')}
           </p>
+          
+          {/* Legal links - very bottom */}
+          <div className="flex flex-wrap justify-center items-center gap-3 text-xs text-purple-300">
+            <Link 
+              to={language === 'de' ? '/impressum' : '/imprint'}
+              className="hover:text-white transition-colors duration-200 underline"
+            >
+              {t('footer.imprint')}
+            </Link>
+            <span>•</span>
+            <Link 
+              to={language === 'de' ? '/datenschutz' : '/privacy'}
+              className="hover:text-white transition-colors duration-200 underline"
+            >
+              {t('footer.privacy')}
+            </Link>
+            <span>•</span>
+            <a 
+              href="https://till-freitag.com/impressum" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors duration-200 underline"
+            >
+              {t('footer.imprint')} (till-freitag.com)
+            </a>
+            <span>•</span>
+            <a 
+              href="https://till-freitag.com/datenschutz" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors duration-200 underline"
+            >
+              {t('footer.privacy')} (till-freitag.com)
+            </a>
+          </div>
         </div>
       </div>
     </footer>
