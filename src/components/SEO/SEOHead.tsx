@@ -2,6 +2,9 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+const SITE_URL = 'https://tills-lovable-lab.lovable.app';
+const OG_IMAGE = `${SITE_URL}/images/projects/till-freitag-com.png`;
+
 interface SEOHeadProps {
   title?: string;
   description?: string;
@@ -13,96 +16,72 @@ interface SEOHeadProps {
 const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
-  image = 'https://lovable.dev/opengraph-image-p98pqg.png',
-  url = 'https://tillfreitag.dev',
+  image = OG_IMAGE,
+  url = SITE_URL,
   type = 'website'
 }) => {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
 
   const defaultTitle = language === 'de' 
-    ? 'Till Freitag | Portfolio - Softwareentwickler & Web Developer'
-    : 'Till Freitag | Portfolio - Software Developer & Web Developer';
+    ? "Till's Lovable Lab | Lovable Development Agency – Till Freitag Consulting"
+    : "Till's Lovable Lab | Lovable Development Agency – Till Freitag Consulting";
 
   const defaultDescription = language === 'de'
-    ? 'Portfolio von Till Freitag - Entdecken Sie meine Projekte als Softwareentwickler mit Fokus auf React, TypeScript und moderne Webtechnologien.'
-    : 'Portfolio of Till Freitag - Discover my projects as a software developer focused on React, TypeScript and modern web technologies.';
+    ? 'Lovable Development Agency von Till Freitag Consulting – Web Applications, Prototypen, MVPs und Training mit Lovable. Digitale Träume, Lovable Realität.'
+    : 'Lovable Development Agency by Till Freitag Consulting – Web Applications, Prototypes, MVPs and Training with Lovable. Digital Dreams, Lovable Reality.';
 
   const pageTitle = title || defaultTitle;
   const pageDescription = description || defaultDescription;
 
   React.useEffect(() => {
-    // Update document title
     document.title = pageTitle;
+    document.documentElement.setAttribute('lang', language);
 
-    // Update meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', pageDescription);
+    // Helper to update or create meta tags
+    const setMeta = (selector: string, attr: string, value: string) => {
+      const el = document.querySelector(selector);
+      if (el) {
+        el.setAttribute(attr, value);
+      }
+    };
+
+    // Basic meta
+    setMeta('meta[name="description"]', 'content', pageDescription);
+
+    // Open Graph
+    setMeta('meta[property="og:title"]', 'content', pageTitle);
+    setMeta('meta[property="og:description"]', 'content', pageDescription);
+    setMeta('meta[property="og:image"]', 'content', image);
+    setMeta('meta[property="og:url"]', 'content', url);
+    setMeta('meta[property="og:type"]', 'content', type);
+    setMeta('meta[property="og:locale"]', 'content', language === 'de' ? 'de_DE' : 'en_US');
+
+    // Twitter
+    setMeta('meta[name="twitter:title"]', 'content', pageTitle);
+    setMeta('meta[name="twitter:description"]', 'content', pageDescription);
+    setMeta('meta[name="twitter:image"]', 'content', image);
+
+    // Canonical
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (canonical) {
+      canonical.href = url;
     }
 
-    // Update Open Graph meta tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute('content', pageTitle);
-    }
+    // Hreflang links
+    const ensureHreflang = (hreflang: string, href: string) => {
+      let link = document.querySelector(`link[hreflang="${hreflang}"]`);
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'alternate');
+        link.setAttribute('hreflang', hreflang);
+        document.head.appendChild(link);
+      }
+      link.setAttribute('href', href);
+    };
 
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) {
-      ogDescription.setAttribute('content', pageDescription);
-    }
-
-    const ogImage = document.querySelector('meta[property="og:image"]');
-    if (ogImage) {
-      ogImage.setAttribute('content', image);
-    }
-
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) {
-      ogUrl.setAttribute('content', url);
-    }
-
-    const ogType = document.querySelector('meta[property="og:type"]');
-    if (ogType) {
-      ogType.setAttribute('content', type);
-    }
-
-    // Update Twitter meta tags
-    const twitterImage = document.querySelector('meta[name="twitter:image"]');
-    if (twitterImage) {
-      twitterImage.setAttribute('content', image);
-    }
-
-    // Update language
-    document.documentElement.setAttribute('lang', language === 'de' ? 'de' : 'en');
-
-    // Add hreflang links
-    let hreflangDe = document.querySelector('link[hreflang="de"]');
-    let hreflangEn = document.querySelector('link[hreflang="en"]');
-    let hreflangDefault = document.querySelector('link[hreflang="x-default"]');
-
-    if (!hreflangDe) {
-      hreflangDe = document.createElement('link');
-      hreflangDe.setAttribute('rel', 'alternate');
-      hreflangDe.setAttribute('hreflang', 'de');
-      hreflangDe.setAttribute('href', `${url}?lang=de`);
-      document.head.appendChild(hreflangDe);
-    }
-
-    if (!hreflangEn) {
-      hreflangEn = document.createElement('link');
-      hreflangEn.setAttribute('rel', 'alternate');
-      hreflangEn.setAttribute('hreflang', 'en');
-      hreflangEn.setAttribute('href', `${url}?lang=en`);
-      document.head.appendChild(hreflangEn);
-    }
-
-    if (!hreflangDefault) {
-      hreflangDefault = document.createElement('link');
-      hreflangDefault.setAttribute('rel', 'alternate');
-      hreflangDefault.setAttribute('hreflang', 'x-default');
-      hreflangDefault.setAttribute('href', url);
-      document.head.appendChild(hreflangDefault);
-    }
+    ensureHreflang('de', `${SITE_URL}?lang=de`);
+    ensureHreflang('en', `${SITE_URL}?lang=en`);
+    ensureHreflang('x-default', SITE_URL);
 
   }, [pageTitle, pageDescription, image, url, type, language]);
 
