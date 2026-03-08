@@ -42,25 +42,45 @@ const ProjectGallery = () => {
     }
   }, [refreshCooldown]);
 
+  // Manual projects that are not from GitHub
+  const manualProjects: ProjectFromGitHub[] = [
+    {
+      id: 999999,
+      title: 'till-freitag.com',
+      description: 'Die offizielle Website der Till Freitag Consulting GmbH – Services rund um monday.com, CRM, Change Management und Tech-Lösungen.',
+      category: 'Web Application',
+      tools: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+      lovableAspects: ['Modernes Design', 'Responsive Layout', 'SEO-optimiert', 'Schnelle Performance'],
+      image: 'https://till-freitag.com/og-image.png',
+      tags: ['agency', 'consulting', 'website'],
+      githubUrl: '',
+      liveUrl: 'https://till-freitag.com',
+      created_at: '2025-01-01T00:00:00Z',
+      updated_at: '2025-06-01T00:00:00Z',
+    }
+  ];
+
   const loadGitHubProjects = async () => {
     setIsLoading(true);
     setError(null);
     try {
       const repos = await githubService.fetchUserRepos();
       const filteredRepos = repos
-        .filter(repo => !repo.fork) // Exclude forked repositories
-        .slice(0, 12); // Limit to 12 most recent projects
+        .filter(repo => !repo.fork)
+        .slice(0, 12);
       
-      // Transform repos to projects with async image loading
       const projectData = await Promise.all(
         filteredRepos.map(repo => githubService.transformRepoToProject(repo))
       );
       
-      setProjects(projectData);
+      // Combine manual projects with GitHub projects
+      setProjects([...manualProjects, ...projectData]);
       setLastRefresh(new Date());
-      setRefreshCooldown(30); // 30 second cooldown
+      setRefreshCooldown(30);
     } catch (error) {
       console.error('Failed to load GitHub projects:', error);
+      // Still show manual projects even if GitHub fails
+      setProjects(manualProjects);
       setError('Failed to load projects from GitHub');
     } finally {
       setIsLoading(false);
