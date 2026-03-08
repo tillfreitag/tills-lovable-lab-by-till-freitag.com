@@ -27,6 +27,14 @@ const MinimalHeader = () => {
           </div>
           
           <div className="flex items-center gap-4">
+            <a
+              href="https://till-freitag.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex text-sm text-purple-600 hover:text-pink-600 transition-colors duration-200 font-medium"
+            >
+              till-freitag.com ↗
+            </a>
             <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
               <span>{t('header.status')}</span>
